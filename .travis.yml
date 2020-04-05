@@ -32,4 +32,4 @@ install:
     - ${PYTHON_EXE} setup.py install
 
 script:
-    - cb download package:lib-tensorflow-pip --all
+    - cr download package:lib-tensorflow-pip --all

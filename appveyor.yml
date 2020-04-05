@@ -23,4 +23,4 @@ install:
 build: false
 
 test_script:
-    - cb download package:lib-tensorflow-pip --all
+    - cr download package:lib-tensorflow-pip --all
