@@ -1,0 +1,16 @@
+build
+build/*
+dist
+dist/*
+
+MANIFEST
+cbrain.*/*
+cbrain.*
+*.pyc
+__pycache__
+.cache/
+.coverage
+htmlcov
+
+.vscode
+
