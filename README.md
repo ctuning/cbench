@@ -10,18 +10,7 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yo
 
 A cross-platform client with a CLI and a Python API for the [open cBrain.io portal](https://cBrain.io).
 
+* Sources: [GitHub](https://github.com/cknowledge/cbrain)
 * Docs: [online](https://cBrain.io/static/docs)
-* Platform support:
-
-|               | As a host platform | As a target platform |
-|---------------|:------------------:|:--------------------:|
-| Generic Linux | ✓ | ✓ |
-| Linux (Arm)   | ✓ | ✓ |
-| Raspberry Pi  | ✓ | ✓ |
-| MacOS         | ✓ | ✓ |
-| Windows       | ✓ | ✓ |
-| iOS           | TBD | TBD |
-| Android       | prototyping | ✓ |
-
 
 Copyright 2020 [cTuning foundation](https://cTuning.org)
