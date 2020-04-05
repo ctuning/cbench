@@ -24,14 +24,14 @@ with open(convert_path('./README.md')) as f:
 
 # Package description
 setup(
-    name='ck-client',
+    name='cbrain',
 
     author="Grigori Fursin",
     author_email="Grigori.Fursin@cTuning.org",
 
     version=version,
 
-    description="Collective Repository client (cBrain) to exchange reusable computational components and workflows",
+    description="cBrian.io client to exchange reusable computational components and workflows",
 
     license="Apache Software License (Apache 2.0)",
 
@@ -64,7 +64,7 @@ setup(
 
     zip_safe=False,
 
-    keywords="reusable computational components, portable workflows, reproducibility, collaborative experiments, portability, dependencies, workflows, automation, pipelines, data pipelines, computer systems, data science",
+    keywords="reusable computational components, portable workflows, reproducibility, collaborative experiments, portability, dependencies, workflows, automation, pipelines, data pipelines, computer systems, data science, collective knowledge",
 
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -82,7 +82,8 @@ setup(
 # Get release notes 
 import cbrain.misc
 r=cbrain.misc.request({'url':portal_url+'/api/v1/?',
-                       'get':{'action':'get_client_release_notes', 
+                       'get':{'action':'event',
+                              'type':'get_cbrain_client_release_notes',
                               'version':version}})
 if r['return']==0:
    notes=r.get('dict',{}).get('notes','')

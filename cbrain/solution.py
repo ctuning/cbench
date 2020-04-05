@@ -423,9 +423,9 @@ def init(i):
        if r['return']>0: return r
 
        ##############################################################
-       # Initializing CR config ...
+       # Initializing CB config ...
        ck.out(config.CR_LINE)
-       ck.out('Initializing CR client for this solution ...')
+       ck.out('Initializing CB client for this solution ...')
 
        if pcfg!='' and os.path.isdir(pcfg):
           pcfg2=os.path.join(pcfg, '.cm', 'meta.json')
@@ -438,9 +438,9 @@ def init(i):
              rx=ck.save_json_to_file({'json_file':pfn, 'dict':{'dict':cfg}})
              if rx['return']>0: return rx 
 
-             # Update CR cfg of the solution
+             # Update CB cfg of the solution
              cmd=cmd0
-             cmd+='ck update cfg:ck-client @'+pfn+'\n'
+             cmd+='ck update cfg:'+config.CK_CFG_DATA_UOA+' @'+pfn+'\n'
 
              ck.out('')
              ck.out(cmd)
@@ -465,7 +465,7 @@ def init(i):
 
        for x in ck_components:
            cmd+='\n'
-           cmd+='cr download '+x['cid']
+           cmd+='cb download '+x['cid']
            if x.get('version','')!='':
               cmd+=' --version='+x['version']
            cmd+=' --force\n'
@@ -770,15 +770,15 @@ def init(i):
 
     ck.out('')
     ck.out('You can crowd-benchmark this solution (if supported) as follows:')
-    ck.out('cr benchmark '+uid)
+    ck.out('cb benchmark '+uid)
 
     ck.out('')
     ck.out('You can run this solution locally as follows:')
-    ck.out('cr run '+uid)
+    ck.out('cb run '+uid)
 
     ck.out('')
     ck.out('You can activate virtual env for this solution to debug/improve it as follows:')
-    ck.out('cr activate '+uid)
+    ck.out('cb activate '+uid)
 
     return {'return':0}
 

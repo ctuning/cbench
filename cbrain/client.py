@@ -1151,7 +1151,7 @@ def start(i):
 
     # We do not need secure HTTPS connection here since the user 
     # runs webbrowser on her/his machine and communicates with
-    # the CR service on the same machine via 127.0.0.1 
+    # the CB service on the same machine via 127.0.0.1 
     # while avoiding Internet!
 
     # Still it's possible to start this service with SSL
