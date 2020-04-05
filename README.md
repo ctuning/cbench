@@ -1,3 +1,5 @@
+# cBrain client (Collective Repository)
+
 [![Downloads](https://pepy.tech/badge/cbrain)](https://pepy.tech/project/cbrain)
 [![PyPI version](https://badge.fury.io/py/cbrain.svg)](https://badge.fury.io/py/cbrain)
 [![Python Version](https://img.shields.io/badge/python-2.7%20|%203.4+-blue.svg)](https://pypi.org/project/cbrain)
