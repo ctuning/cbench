@@ -367,9 +367,7 @@ def process_web_request(i):
   p=tempfile.gettempdir()
 
   # Execute command *********************************************************
-  if (act!='heartbit' or not heartbit_started) and (act!="get_status" or not get_status_started):
-     ck.out('***************************************************************')
-     ck.out('Received action request: ' + act)
+#  ck.out('*** Received action request: ' + act)
   if act=='get_host_platform_info':
     r=ck.access({'action':'detect',
                   'module_uoa':'platform'})
@@ -899,8 +897,6 @@ def process_web_request(i):
     return
 
   elif act=='get_status':
-
-   
     data_id=ii['data_id']
 
     # Find solution
