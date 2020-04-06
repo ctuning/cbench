@@ -1,3 +1,9 @@
+* 1.0.6
+  Minor fixes with logs
+
+* 1.0.5
+  Various fixes and improvements
+
 * 1.0.4
   Fixing ReadMe
 
