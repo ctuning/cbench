@@ -135,6 +135,7 @@ tunnel_url=''
 
 # Skip print for hearbeat
 heartbit_started=False
+get_status_started=False
 
 ##############################################################################
 # Class to handle requests in separate threads
@@ -239,7 +240,7 @@ def process_web_request(i):
   Output: { None }
   """
 
-  global heartbit_started
+  global heartbit_started, get_status_started
 
   from . import solution
 
@@ -366,7 +367,7 @@ def process_web_request(i):
   p=tempfile.gettempdir()
 
   # Execute command *********************************************************
-  if act!='heartbit' or not heartbit_started:
+  if (act!='heartbit' or not heartbit_started) and (act!="get_status" or not get_status_started):
      ck.out('***************************************************************')
      ck.out('Received action request: ' + act)
   if act=='get_host_platform_info':
@@ -898,7 +899,8 @@ def process_web_request(i):
     return
 
   elif act=='get_status':
-    
+
+   
     data_id=ii['data_id']
 
     # Find solution
@@ -916,21 +918,23 @@ def process_web_request(i):
     rx=ck.load_json_file({'json_file':tmp_solStatus})
     if rx['return']>0: return rx
 
-    ck.out(json.dumps(rx, indent=2))
+    if not get_status_started:
+       ck.out(json.dumps(rx, indent=2))
 
     rdf=rx['dict']
 
-    ck.out('')
+    if not get_status_started:
+       ck.out('')
 
     s=json.dumps(rdf, indent=4, sort_keys=True)
     web_out({'http':http, 'type':'json', 'bin':s.encode('utf8')})
+
+    get_status_started=True
 
     return
 
   #############################################################################################################3
   elif act=='heartbit':
-
-    heartbit_started=True
 
     locdir = os.path.dirname(os.path.realpath(__file__))
     if not heartbit_started:
@@ -941,6 +945,8 @@ def process_web_request(i):
 
     if not heartbit_started:
        ck.out('  Loaded file '+pf)
+
+    heartbit_started=True
 
     r=ck.load_text_file({'text_file':pf, 'keep_as_bin':'yes'})
     if r['return']>0:
