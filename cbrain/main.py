@@ -262,6 +262,7 @@ def push_result(uid,
 
     UID: portal graph identifier.
     ''' 
+
     from . import graph
     r=graph.push({'uid':uid,
                   'version':version,

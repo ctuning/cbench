@@ -80,16 +80,14 @@ setup(
 
 ###########################################################
 # Get release notes 
-import cbrain.misc
-r=cbrain.misc.request({'url':portal_url+'/api/v1/?',
-                       'get':{'action':'event',
-                              'type':'get_cbrain_client_release_notes',
-                              'version':version}})
-if r['return']==0:
-   notes=r.get('dict',{}).get('notes','')
-   if notes!='':
-      print ('*********************************************************************')
-      print ('Release notes:')
-      print ('')
-      print (notes)
-      print ('*********************************************************************')
+import cbrain.comm
+r=cbrain.comm.send({'config':{'server_url':portal_url+'/api/v1/?'},
+                    'action':'event', 
+                    'dict':{'type':'get-client-release-notes','version':version}})
+notes=r.get('notes','')
+if notes!='':
+   print ('*********************************************************************')
+   print ('Release notes:')
+   print ('')
+   print (notes)
+   print ('*********************************************************************')

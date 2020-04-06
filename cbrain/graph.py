@@ -331,7 +331,10 @@ def push(i):
                  }
                 })
     if r['return']>0: return r
+    url=r.get('url','')
 
     ck.out('  Successfully pushed your point to a graph!')
+    if url!='':
+       ck.out('    URL: '+url)
 
     return r

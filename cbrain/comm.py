@@ -32,6 +32,15 @@ def send(i):
             }
     """
 
+    # Import modules compatible with Python 2.x and 3.x
+    import urllib
+
+    try:    import urllib.request as urllib2
+    except: import urllib2
+
+    try:    from urllib.parse import urlencode
+    except: from urllib import urlencode
+
     # Get server and user config
     config=i.get('config',{})
 
@@ -55,15 +64,6 @@ def send(i):
 
     remote_skip_certificate_validation=config.get('server_skip_validation')
     if remote_skip_certificate_validation==None: remote_skip_certificate_validation=''
-
-    # Import modules compatible with Python 2.x and 3.x
-    import urllib
-
-    try:    import urllib.request as urllib2
-    except: import urllib2
-
-    try:    from urllib.parse import urlencode
-    except: from urllib import urlencode
 
     # Prepare dict to send to remote server
     ii={}
