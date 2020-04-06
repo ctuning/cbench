@@ -465,7 +465,7 @@ def init(i):
 
        for x in ck_components:
            cmd+='\n'
-           cmd+='cr download '+x['cid']
+           cmd+='cb download '+x['cid']
            if x.get('version','')!='':
               cmd+=' --version='+x['version']
            cmd+=' --force\n'
@@ -770,15 +770,15 @@ def init(i):
 
     ck.out('')
     ck.out('You can crowd-benchmark this solution (if supported) as follows:')
-    ck.out('cr benchmark '+uid)
+    ck.out('cb benchmark '+uid)
 
     ck.out('')
     ck.out('You can run this solution locally as follows:')
-    ck.out('cr run '+uid)
+    ck.out('cb run '+uid)
 
     ck.out('')
     ck.out('You can activate virtual env for this solution to debug/improve it as follows:')
-    ck.out('cr activate '+uid)
+    ck.out('cb activate '+uid)
 
     return {'return':0}
 

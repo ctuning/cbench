@@ -239,7 +239,7 @@ def init(i):
        ck.out('')
        ck.out('You can publish your graph on the portal using the following commands when ready: ')
        ck.out('')
-       ck.out('  cr publish cr-result:'+data_uoa+' --version=1.0.0 --force (--private)')
+       ck.out('  cb publish cr-result:'+data_uoa+' --version=1.0.0 --force (--private)')
 
     return r
 
