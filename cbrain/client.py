@@ -133,6 +133,9 @@ context_types={
 # URL to tunnel requests to (useful for development boards and Raspberry Pi)
 tunnel_url=''
 
+# Skip print for hearbeat
+heartbit_started=False
+
 ##############################################################################
 # Class to handle requests in separate threads
 
@@ -235,6 +238,8 @@ def process_web_request(i):
 
   Output: { None }
   """
+
+  global heartbit_started
 
   from . import solution
 
@@ -361,8 +366,9 @@ def process_web_request(i):
   p=tempfile.gettempdir()
 
   # Execute command *********************************************************
-  ck.out('***************************************************************')
-  ck.out('Received action request: ' + act)
+  if act!='heartbit' or not heartbit_started:
+     ck.out('***************************************************************')
+     ck.out('Received action request: ' + act)
   if act=='get_host_platform_info':
     r=ck.access({'action':'detect',
                   'module_uoa':'platform'})
@@ -795,7 +801,7 @@ def process_web_request(i):
 
   #############################################################################################################3
   elif act=='get_result':
-    
+
     data_id=ii['data_id']
 
     # Find solution
@@ -834,7 +840,7 @@ def process_web_request(i):
 
     # If Android-like device wait for the file ...
     ppull=os.path.join(pp, 'support-script-pull.sh')
-    
+
     # Waiting for output file
     if not os.path.isfile(pout):
       ck.out ('Waiting for output file: '+pout)
@@ -924,13 +930,17 @@ def process_web_request(i):
   #############################################################################################################3
   elif act=='heartbit':
 
+    heartbit_started=True
+
     locdir = os.path.dirname(os.path.realpath(__file__))
-    ck.out('  Local directory: '+locdir)
+    if not heartbit_started:
+       ck.out('  Local directory: '+locdir)
 
     # Finding last file and incrementing
     pf=os.path.join(locdir, 'static/favicon.ico')
 
-    ck.out('  Loaded file '+pf)
+    if not heartbit_started:
+       ck.out('  Loaded file '+pf)
 
     r=ck.load_text_file({'text_file':pf, 'keep_as_bin':'yes'})
     if r['return']>0:
