@@ -233,7 +233,7 @@ def publish(i):
               del(repo_dict['path'])
 
         # Generate temp file to pack
-        r=ck.gen_tmp_file({'prefix':'cr-obj-', 'suffix':'.zip'})
+        r=ck.gen_tmp_file({'prefix':'obj-', 'suffix':'.zip'})
         if r['return']>0: return r
 
         fn=r['file_name']
