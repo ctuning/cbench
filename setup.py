@@ -81,10 +81,10 @@ setup(
 
 ###########################################################
 # Get release notes 
-import cbrain.comm
-r=cbrain.comm.send({'config':{'server_url':portal_url+'/api/v1/?'},
-                    'action':'event', 
-                    'dict':{'type':'get-client-release-notes','version':version}})
+import cbrain.comm_min
+r=cbrain.comm_min.send({'url':portal_url+'/api/v1/?',
+                        'action':'event', 
+                        'dict':{'type':'get-client-release-notes','version':version}})
 notes=r.get('notes','')
 if notes!='':
    print ('*********************************************************************')
