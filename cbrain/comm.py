@@ -80,8 +80,6 @@ def send(i):
     s=r['string']
     if sys.version_info[0]>2: s=s.encode('utf8')
 
-#    s=urlencode({'cr_json':s}) # We have to send JSON as string
-
     # Check if skip SSL certificate
     ctx=None
     add_ctx=False

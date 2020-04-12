@@ -77,9 +77,9 @@ def publish(i):
 
     tags=i.get('tags','')
 
-    # Check if no module and use "cr-solution" by default
+    # Check if no module and use "solution" by default
     if cid.find(':')<0:
-       cid='cr-solution:'+cid
+       cid='solution:'+cid
 
     # Version ###########################################################        
     version=i.get('version')
@@ -91,8 +91,8 @@ def publish(i):
     author=i.get('author','')
     if author==None: author=''
 
-    author_cr_id=i.get('author_cr_id','')
-    if author_cr_id==None: author_cr_id=''
+    author_id=i.get('author_id','')
+    if author_id==None: author_id=''
 
     copyright=i.get('copyright','')
     if copyright==None: copyright=''
@@ -245,8 +245,8 @@ def publish(i):
 
         ii={'path':p, 'all':'yes'}
 
-        # Prune files for cr-solution
-        if module_uoa=='cr-solution':
+        # Prune files for solution
+        if module_uoa=='solution':
            ii['ignore_names']=['CK','venv']
 
         r=ck.list_all_files(ii)
@@ -373,7 +373,7 @@ def publish(i):
                        'first_creation':first_creation,
                        'version':version,
                        'author':author,
-                       'author_cr_id':author_cr_id,
+                       'author_id':author_id,
                        'copyright':copyright2,
                        'license':license2,
                        'source':source2,

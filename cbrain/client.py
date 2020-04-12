@@ -396,12 +396,21 @@ def process_web_request(i):
     #          'quiet': 'yes'})
 
     if r['return']>0: 
+      ck.out(config.CR_LINE)
+      ck.out("Error: "+r.get('error',''))
+      ck.out(config.CR_LINE)
+
       # Process error properly
       web_err({'http':http, 'type':xt, 'bin':r['error'].encode('utf8')})
       return
 
     solution = {'status': True}
     s=json.dumps(solution, indent=4, sort_keys=True)
+
+    ck.out(config.CR_LINE)
+    ck.out("Success!")
+    ck.out(config.CR_LINE)
+
     web_out({'http':http, 'type':'json', 'bin':s.encode('utf8')})
 
     return
@@ -421,12 +430,21 @@ def process_web_request(i):
     #          'quiet': 'yes'})
 
     if r['return']>0: 
+      ck.out(config.CR_LINE)
+      ck.out("Error: "+r.get('error',''))
+      ck.out(config.CR_LINE)
+
       # Process error properly
       web_err({'http':http, 'type':xt, 'bin':r['error'].encode('utf8')})
       return
 
     solution = {'status': True}
     s=json.dumps(solution, indent=4, sort_keys=True)
+
+    ck.out(config.CR_LINE)
+    ck.out("Success!")
+    ck.out(config.CR_LINE)
+
     web_out({'http':http, 'type':'json', 'bin':s.encode('utf8')})
 
     return
@@ -439,15 +457,25 @@ def process_web_request(i):
     r=solution.benchmark({'uid':data_id})
 
     if r['return']>0: 
+      ck.out(config.CR_LINE)
+      ck.out("Error: "+r.get('error',''))
+      ck.out(config.CR_LINE)
+
       # Process error properly
       web_err({'http':http, 'type':xt, 'bin':r['error'].encode('utf8')})
       return
 
     solution = {'status': True}
     s=json.dumps(solution, indent=4, sort_keys=True)
+
+    ck.out(config.CR_LINE)
+    ck.out("Success!")
+    ck.out(config.CR_LINE)
+
     web_out({'http':http, 'type':'json', 'bin':s.encode('utf8')})
     return
-  
+
+  #############################################################################################################3
   elif act=='publish_result':
 
     data_id=ii.get('data_id','')
@@ -461,6 +489,11 @@ def process_web_request(i):
 
     solution = {'status': True}
     s=json.dumps(solution, indent=4, sort_keys=True)
+
+    ck.out(config.CR_LINE)
+    ck.out("Success!")
+    ck.out(config.CR_LINE)
+
     web_out({'http':http, 'type':'json', 'bin':s.encode('utf8')})
     return
   
@@ -476,7 +509,7 @@ def process_web_request(i):
 
     # Find solution
     r=ck.access({'action':'load',
-                 'module_uoa':'cr-solution',
+                 'module_uoa':'solution',
                  'data_uoa':data_id})
     if r['return']>0:
       # Process error properly
@@ -506,9 +539,9 @@ def process_web_request(i):
     #          web_err({'http':http, 'type':xt, 'bin':r['error'].encode('utf8')})
     #          return
 
-    #    cur_dir = 'D:\\Work1\\CK\\ck-repos\\local\\cr-solution\\demo-obj-detection-kitti-min-tf-cpu-win\\CK\\ck-tensorflow\\program\\squeezedet\\tmp\\out' #os.path.join(r['path'],"tmp/out") 
-    #    cur_dir='/home/cindex/CK/local/cr-solution/demo-obj-detection-self-driving-win/CK/ck-tensorflow/program/squeezedet/tmp/out'
-    #    cur_dir='/home/cindex/CK/local/cr-solution/demo-obj-detection-kitti-min-tf-cpu-win/CK/ck-tensorflow/program/squeezedet/tmp/out'
+    #    cur_dir = 'D:\\Work1\\CK\\ck-repos\\local\\solution\\demo-obj-detection-kitti-min-tf-cpu-win\\CK\\ck-tensorflow\\program\\squeezedet\\tmp\\out' #os.path.join(r['path'],"tmp/out") 
+    #    cur_dir='/home/cindex/CK/local/solution/demo-obj-detection-self-driving-win/CK/ck-tensorflow/program/squeezedet/tmp/out'
+    #    cur_dir='/home/cindex/CK/local/solution/demo-obj-detection-kitti-min-tf-cpu-win/CK/ck-tensorflow/program/squeezedet/tmp/out'
 
     # find the penultimate image provided
     try:
@@ -605,7 +638,7 @@ def process_web_request(i):
 
     # Find solution
     r=ck.access({'action':'load',
-                 'module_uoa':'cr-solution',
+                 'module_uoa':'solution',
                  'data_uoa':data_id})
     if r['return']>0:
       # Process error properly
@@ -806,7 +839,7 @@ def process_web_request(i):
 
     # Find solution
     r=ck.access({'action':'load',
-                 'module_uoa':'cr-solution',
+                 'module_uoa':'solution',
                  'data_uoa':data_id})
     if r['return']>0:
       # Process error properly
@@ -903,7 +936,7 @@ def process_web_request(i):
 
     # Find solution
     r=ck.access({'action':'load',
-                 'module_uoa':'cr-solution',
+                 'module_uoa':'solution',
                  'data_uoa':data_id})
     if r['return']>0:
       # Process error properly

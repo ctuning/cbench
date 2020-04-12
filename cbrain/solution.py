@@ -148,7 +148,7 @@ def init(i):
 
        dd = {}
 
-       r=obj.download({'cid':'local:cr-solution:'+uid})
+       r=obj.download({'cid':'local:solution:'+uid})
        if r['return']>0: 
           if r['return']!=16: return r
 
@@ -237,10 +237,10 @@ def init(i):
 
     #    dd['detected_platform_info']=rplat
 
-    dd['tags']=["cr-solution"]
+    dd['tags']=["solution"]
 
     from . import __version__
-    dd['cr_client_version']=__version__
+    dd['client_version']=__version__
 
     # Check if extra meta
     add_extra_meta_from_file=i.get('add_extra_meta_from_file','')
@@ -292,8 +292,9 @@ def init(i):
        r=ck.save_json_to_file({'json_file':pdesc, 'dict':d, 'sort_keys':'yes'})
        if r['return']>0: return r
 
-       if solution_uoa not in graphs:
-          graphs.append(solution_uoa)
+# Decided to add all graphs explicitly!
+#       if solution_uoa not in graphs:
+#          graphs.append(solution_uoa)
 
        sgi=i.get('skip_graph_init')
        if sgi!=None and not sgi:
@@ -1131,6 +1132,7 @@ def benchmark(i):
       os.remove(path_result_file)
 
     ##############################################################
+    rr={'return':0}
     if run is True:
 
       ck.out(config.CR_LINE)
@@ -1166,7 +1168,7 @@ def benchmark(i):
           'cmd':cmd,
           'encoding':encoding,
           'output_to_console':'yes'}
-      r=ck.access(ii)
+      rr=ck.access(ii)
 
       if r['return']>0: 
         rdf_st['status'] = -1
@@ -1203,7 +1205,7 @@ def benchmark(i):
         rd['solution_duration']=elapsed
 
         from . import __version__
-        rd['cr_client_version']=__version__
+        rd['client_version']=__version__
 
 
         rx=ck.flatten_dict({'dict':rd})
@@ -1229,10 +1231,9 @@ def benchmark(i):
 
         pdeps=os.path.join(p, 'resolved-deps.json')
         if os.path.isfile(pdeps):
-           r=ck.load_json_file({'json_file':pdeps})
-           if r['return']==0:
-              dx=r['dict']
-
+           rx=ck.load_json_file({'json_file':pdeps})
+           if rx['return']==0:
+              dx=rx['dict']
 
         ck.out(json.dumps(crdf, indent=2))
 
@@ -1262,6 +1263,9 @@ def benchmark(i):
             ck.out('')
             rx=graph.push({'uid':gr, 'version':'1.0.0', 'filename':fn})
             if rx['return']>0: return rx
+
+            if 'graphs' not in rr: rr['graphs']=[]
+            rr['graphs'].append(rx)
 
             rdf_st['status'] = 3
             rx=ck.save_json_to_file({'json_file':tmp_solStatus, 'dict':rdf_st})
@@ -1338,12 +1342,14 @@ def benchmark(i):
                   rx=graph.push({'uid':gr, 'version':'1.0.0', 'filename':fn})
                   if rx['return']>0: return rx
 
+                  if 'graphs' not in rr: rr['graphs']=[]
+                  rr['graphs'].append(rx)
+
                   # Clean temp data file
                   if os.path.isfile(fn):
                      os.remove(fn)
 
-      return r
-    return {'return':0}
+    return rr
 
 ############################################################################
 # List local solutions

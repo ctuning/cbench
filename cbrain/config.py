@@ -22,7 +22,7 @@ PACK_SIZE_WARNING=5000000
 CR_WORK_DIR='CR'
 CR_SOLUTIONS_DIR='solutions'
 
-CR_MODULE_UOA='cr-solution'
+CR_MODULE_UOA='solution'
 
 PACK_FILE='pack.zip'
 
@@ -45,7 +45,7 @@ CR_SOLUTION_CK_COMPONENTS=[
  {'cid':'module:event', 'version':'1.0.0'},
  {'cid':'module:lib', 'version':'1.0.0'},
  {'cid':'module:result', 'version':'1.0.0'},
- {'cid':'module:cr-solution', 'version':'1.0.0'},
+ {'cid':'module:solution', 'version':'1.0.0'},
  {'cid':'os:*', 'version':'1.0.0'},
  {'cid':'platform.init:*', 'version':'1.0.0'},
  {'cid':'script:download-and-install-package', 'version':'1.0.0'},

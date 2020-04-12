@@ -94,7 +94,7 @@ def login(username,
 @click.option('-w', '--workspaces', 'workspaces', required=False)
 @click.option('-v', '--version', 'version', required=False)
 @click.option('--author', 'author', required=False)
-@click.option('--author_cr_id', 'author_cr_id', required=False)
+@click.option('--author_id', 'author_id', required=False)
 @click.option('--copyright', 'copyright', required=False)
 @click.option('--license', 'license', required=False)
 @click.option('--source', 'source', required=False)
@@ -109,7 +109,7 @@ def publish(cid,
             workspaces,
             version,
             author,
-            author_cr_id,
+            author_id,
             copyright,
             license,
             source):
@@ -129,7 +129,7 @@ def publish(cid,
                    'workspaces':workspaces,
                    'version':version,
                    'author':author,
-                   'author_cr_id':author_cr_id,
+                   'author_id':author_id,
                    'copyright':copyright,
                    'license':license,
                    'source':source})
@@ -444,7 +444,7 @@ def benchmark(uid,
     ''' 
     from . import solution
     r=solution.benchmark({'uid':uid,
-                    'cmd':cmd})
+                          'cmd':cmd})
 
     if r['return']>0: process_error(r)
     return 0
