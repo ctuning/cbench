@@ -742,6 +742,7 @@ def process_web_request(i):
         ck.out('Trying to pull from device ...')
 
         extra_cmd='cd "'+pout+'"\n'
+        extra_cmd+='export SOLUTION_PATH="'+pp+'"\n'
         extra_cmd+='export CR_SOLUTION_PATH="'+pp+'"\n'
         extra_cmd+='export CODEREEF_SOLUTION_PATH="'+pp+'"\n' # Keeping for compatibility with older version
         extra_cmd+='. "'+ppull+'" '+filename+'\n'
@@ -850,6 +851,7 @@ def process_web_request(i):
         ck.out('Trying to pull from device ...')
 
         extra_cmd='cd "'+pout+'"\n'
+        extra_cmd+='export SOLUTION_PATH="'+pp+'"\n'
         extra_cmd+='export CR_SOLUTION_PATH="'+pp+'"\n'
         extra_cmd+='export CODEREEF_SOLUTION_PATH="'+pp+'"\n' # Keeping for compatibility with older version
         extra_cmd+='. "'+ppull+'" '+filename+'\n'

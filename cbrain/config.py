@@ -12,7 +12,8 @@ CK_CFG_MODULE_UID="b34231a3467566f8" # ck info module:cfg
 
 CK_CFG_MODULE_REPO_UOA="befd7892b0d469e9" # CK module UOA for REPO
 
-CR_DEFAULT_SERVER_URL="https://cBrain.io/api/v1/?"
+CR_DEFAULT_SERVER="https://cKnowledge.io"
+CR_DEFAULT_SERVER_URL=CR_DEFAULT_SERVER+"/api/v1/?"
 CR_DEFAULT_SERVER_USER="crowd-user"
 CR_DEFAULT_SERVER_API_KEY="43fa84787ff65c2c00bf740e3853c90da8081680fe1025e8314e260888265033"
 
@@ -41,9 +42,9 @@ CR_SOLUTION_CK_COMPONENTS=[
  {'cid':'module:script', 'version':'1.0.0'},
  {'cid':'module:soft', 'version':'1.1.0'},
  {'cid':'module:docker', 'version':'1.0.0'},
- {'cid':'module:cr-event', 'version':'1.0.0'},
- {'cid':'module:cr-lib', 'version':'1.0.0'},
- {'cid':'module:cr-result', 'version':'1.0.0'},
+ {'cid':'module:event', 'version':'1.0.0'},
+ {'cid':'module:lib', 'version':'1.0.0'},
+ {'cid':'module:result', 'version':'1.0.0'},
  {'cid':'module:cr-solution', 'version':'1.0.0'},
  {'cid':'os:*', 'version':'1.0.0'},
  {'cid':'platform.init:*', 'version':'1.0.0'},

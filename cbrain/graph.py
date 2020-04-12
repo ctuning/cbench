@@ -21,7 +21,7 @@ meta_template={
       "viz_engine": "ck_beta"
     },
     "tags": [
-      "cr-result"
+      "result"
     ]
   }
 
@@ -99,7 +99,7 @@ def init(i):
 
     if uid!='':
        r=ck.access({'action':'load',
-                    'module_uoa':'cr-result',
+                    'module_uoa':'result',
                     'data_uoa':uid})
        if r['return']>0:
           if r['return']!=16: return r
@@ -136,7 +136,7 @@ def init(i):
        meta['meta']['info']=x
 
     # Adding tags
-    if not found or (len(tags)==1 and 'cr-result' in tags):
+    if not found or (len(tags)==1 and 'result' in tags):
        r=ck.inp({'text':'Enter tags for your graph separated by commas: '})
        if r['return']>0: return r
 
@@ -174,7 +174,7 @@ def init(i):
     if found: a='update'
 
     ii={'action':a,
-        'module_uoa':'cr-result',
+        'module_uoa':'result',
         'data_uoa':uid,
         'dict':meta,
         'sort_keys':'yes',
@@ -218,10 +218,10 @@ def init(i):
     ck.out('You can continue updating graph using following files: ')
     ck.out('')
     ck.out('  Graph general meta info: '+p1)
-    ck.out('     See example at https://cBrain.io/result/sota-mlperf-inference-results-v0.5-open-available/?action=download&filename=.cm/meta.json')
+    ck.out('     See example at '+config.CR_DEFAULT_SERVER+'/result/sota-mlperf-inference-results-v0.5-open-available/?action=download&filename=.cm/meta.json')
     ck.out('')
     ck.out('  Graph axes info: '+p2)
-    ck.out('     See example at https://cBrain.io/result/sota-mlperf-inference-results-v0.5-open-available/?action=download&filename=desc.json')
+    ck.out('     See example at '+config.CR_DEFAULT_SERVER+'/result/sota-mlperf-inference-results-v0.5-open-available/?action=download&filename=desc.json')
 
     # Need to publish
     ck.out('')
@@ -231,7 +231,7 @@ def init(i):
 
     if s=='' or s=='y':
        ck.out('')
-       r=obj.publish({'cid':'cr-result:'+data_uoa,
+       r=obj.publish({'cid':'result:'+data_uoa,
                       'version':version,
                       'force':True})
 
@@ -239,7 +239,7 @@ def init(i):
        ck.out('')
        ck.out('You can publish your graph on the portal using the following commands when ready: ')
        ck.out('')
-       ck.out('  cb publish cr-result:'+data_uoa+' --version=1.0.0 --force (--private)')
+       ck.out('  cb publish result:'+data_uoa+' --version=1.0.0 --force (--private)')
 
     return r
 

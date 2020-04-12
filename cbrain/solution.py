@@ -1197,8 +1197,8 @@ def benchmark(i):
         rd=rx['dict']
 
         # Add solution info
-        rd['cr_solution_uoa']=solution_uoa
-        rd['cr_solution_uid']=solution_uid
+        rd['solution_uoa']=solution_uoa
+        rd['solution_uid']=solution_uid
         rd['solution_run_date']=sdate
         rd['solution_duration']=elapsed
 
@@ -1245,7 +1245,7 @@ def benchmark(i):
           ck.out(config.CR_LINE)
           ck.out('Pushing results to graphs...')
 
-          rx=ck.gen_tmp_file({'prefix':'tmp-cr-result-', 'suffix':'.json'})
+          rx=ck.gen_tmp_file({'prefix':'tmp-result-', 'suffix':'.json'})
           if rx['return']>0: return rx
           fn=rx['file_name']
 
@@ -1327,7 +1327,7 @@ def benchmark(i):
                       if vv!='':
                          cdata[ok]=vv
 
-                  rx=ck.gen_tmp_file({'prefix':'tmp-cr-result-', 'suffix':'.json'})
+                  rx=ck.gen_tmp_file({'prefix':'tmp-result-', 'suffix':'.json'})
                   if rx['return']>0: return rx
                   fn=rx['file_name']
 
@@ -1680,7 +1680,7 @@ def publish_result(i):
           ck.out(config.CR_LINE)
           ck.out('Pushing results to graphs...')
 
-          rx=ck.gen_tmp_file({'prefix':'tmp-cr-result-', 'suffix':'.json'})
+          rx=ck.gen_tmp_file({'prefix':'tmp-result-', 'suffix':'.json'})
           if rx['return']>0: return rx
           fn=rx['file_name']
 
@@ -1762,7 +1762,7 @@ def publish_result(i):
                   if vv!='':
                     cdata[ok]=vv
 
-                rx=ck.gen_tmp_file({'prefix':'tmp-cr-result-', 'suffix':'.json'})
+                rx=ck.gen_tmp_file({'prefix':'tmp-result-', 'suffix':'.json'})
                 if rx['return']>0: return rx
                 fn=rx['file_name']
 

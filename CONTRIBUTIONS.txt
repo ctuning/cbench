@@ -1,4 +1,4 @@
-cBrain client uses the standard Apache2 license. 
+Collective Knowledge client (cBrain) uses the standard Apache2 license. 
 
 Contributions are very welcome. We suggest you to fork the code 
 on GitHub and then submit a pull request:

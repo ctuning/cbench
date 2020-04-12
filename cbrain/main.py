@@ -18,7 +18,6 @@ def process_error(r):
 
     e=r.get('error','')
     if e!='':
-#       e+=' (check client docs at https://cBrain.io/docs)'
        r['error']=e
     
     ck.err(r)

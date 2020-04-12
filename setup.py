@@ -16,7 +16,7 @@ version = imp.load_source(
     'cbrain.__init__', os.path.join('cbrain', '__init__.py')).__version__
 
 # Default portal
-portal_url='https://cBrain.io'
+portal_url='https://cKnowledge.io'
 
 # Read description (TBD: should add short description!)
 with open(convert_path('./README.md')) as f:
@@ -64,7 +64,7 @@ setup(
 
     zip_safe=False,
 
-    keywords="reusable computational components, portable workflows, reproducibility, collaborative experiments, portability, dependencies, workflows, automation, pipelines, data pipelines, computer systems, data science, collective knowledge",
+    keywords="reproducible benchmarking, customizable benchmarking, portable workflows, reusable computational components, reproducibility, collaborative experiments, automation, optimization, co-design, collective knowledge",
 
     classifiers=[
         "Development Status :: 4 - Beta",

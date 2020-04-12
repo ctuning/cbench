@@ -175,9 +175,9 @@ def publish(i):
            for a in actions:
                extra_dict['last_module_actions'].append(a+' '+data_uoa)
 
-        elif module_uoa=='cr-lib':
+        elif module_uoa=='lib':
            not_digital_component=True
-           extra_tags=['cr-library']
+           extra_tags=['library']
 
            if 'reproduced-papers' in data_meta.get('tags',[]):
               extra_tags.append('reproduced-papers')
@@ -201,7 +201,7 @@ def publish(i):
                if data_meta2.get(k,'')=='yes':
                   extra_tags.append(k)
 
-        elif module_uoa=='cr-event' or module_uoa=='repo':
+        elif module_uoa=='event' or module_uoa=='repo':
            not_digital_component=True
 
         # Get info of the first creation
@@ -479,7 +479,7 @@ def open_page(i):
           url=''
 
     if url=='':
-       url='https://cBrain.io/'
+       url=config.CR_DEFAULT_SERVER
 
     # CID ###########################################################        
     cid=i.get('cid')

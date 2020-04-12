@@ -5,9 +5,9 @@
 Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbrain.svg?branch=master)](https://travis-ci.org/cknowledge/cbrain)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/divig0aa0valwdgr?svg=true)](https://ci.appveyor.com/project/gfursin/cbrain)
 
-A cross-platform client with a CLI and a Python API for the [open cBrain.io portal](https://cBrain.io).
+A cross-platform client with a CLI and a Python API for the [open cKnowledge.io portal](https://cKnowledge.io).
 
-* Docs: [online](https://cBrain.io/static/docs)
+* Docs: [online](https://cKnowledge.io/static/docs)
 * Platform support:
 
 |               | As a host platform | As a target platform |
