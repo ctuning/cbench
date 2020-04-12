@@ -10,6 +10,11 @@ import imp
 ############################################################
 from setuptools import find_packages, setup, convert_path
 
+try:
+    from io import open
+except ImportError:
+    pass
+
 ############################################################
 # Version
 version = imp.load_source(
@@ -17,10 +22,6 @@ version = imp.load_source(
 
 # Default portal
 portal_url='https://cKnowledge.io'
-
-# Read description (TBD: should add short description!)
-with open(convert_path('./README.md')) as f:
-    long_readme = f.read()
 
 # Package description
 setup(
@@ -35,8 +36,8 @@ setup(
 
     license="Apache Software License (Apache 2.0)",
 
-    long_description_content_type='text/markdown',
-    long_description=long_readme,
+    long_description=open(convert_path('./README.md'), encoding="utf-8").read(),
+    long_description_content_type="text/markdown",
 
     url=portal_url,
 
