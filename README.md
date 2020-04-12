@@ -5,7 +5,7 @@
 Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbrain.svg?branch=master)](https://travis-ci.org/cknowledge/cbrain)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/divig0aa0valwdgr?svg=true)](https://ci.appveyor.com/project/gfursin/cbrain)
 
-A cross-platform client with a CLI and a Python API for the [open cKnowledge.io portal](https://cKnowledge.io).
+A cross-platform client with a CLI and a Python API to perform collaborative and reproducible benchmarking and optimization of deep tech (AI, ML, quantum) via the open cKnowledge portal: https://cKnowledge.io
 
 * Docs: [online](https://cKnowledge.io/static/docs)
 * Platform support:
