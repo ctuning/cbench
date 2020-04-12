@@ -1,3 +1,6 @@
+* 1.1.9
+  Fixed error in comm_min
+
 * 1.1.8
   Added comm_min for minimal communication with the CK portal 
   without extra deps to get the latest release notes

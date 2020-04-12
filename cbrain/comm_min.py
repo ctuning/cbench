@@ -4,9 +4,6 @@
 # Developer(s): Grigori Fursin, https://fursin.net
 #
 
-
-from . import config
-
 import json
 import sys
 import os
