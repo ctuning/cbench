@@ -465,8 +465,10 @@ def process_web_request(i):
       web_err({'http':http, 'type':xt, 'bin':r['error'].encode('utf8')})
       return
 
-    solution = {'status': True}
-    s=json.dumps(solution, indent=4, sort_keys=True)
+#    solution = {'status': True}
+#    s=json.dumps(solution, indent=4, sort_keys=True)
+    # Need to pass info about graphs
+    s=json.dumps(r, sort_keys=True)
 
     ck.out(config.CR_LINE)
     ck.out("Success!")
@@ -488,7 +490,8 @@ def process_web_request(i):
       return
 
     solution = {'status': True}
-    s=json.dumps(solution, indent=4, sort_keys=True)
+#    s=json.dumps(solution, indent=4, sort_keys=True)
+    s=json.dumps(r, sort_keys=True)
 
     ck.out(config.CR_LINE)
     ck.out("Success!")

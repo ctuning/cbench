@@ -1,3 +1,6 @@
+* 1.1.12 
+  Return graphs URLs during crowd-benchmarking to be able to visualize them at cKnowledge.io dashboards
+
 * 1.1.9
   Fixed error in comm_min
 
