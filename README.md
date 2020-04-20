@@ -5,6 +5,8 @@
 Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbrain.svg?branch=master)](https://travis-ci.org/cknowledge/cbrain)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/your1v689smkudvx?svg=true)](https://ci.appveyor.com/project/gfursin/cbrain)
 
+## Introduction
+
 cBrain is a cross-platform client connected with the 
 [open cKnowledge.io portal](https://cKnowledge.io)
 to perform collaborative and reproducible benchmarking,
