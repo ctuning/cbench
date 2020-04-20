@@ -42,4 +42,4 @@ We would like to thank all [CK partners](https://cKnowledge.org/partners.html)
 for fruitful discussions and feedback!
 
 
-**Copyright 2020 [Grigori Fursin](https://cKnowledge.io/@gfursin) and the [cTuning foundation](https://cTuning.org)**
+*Copyright 2020 [Grigori Fursin](https://cKnowledge.io/@gfursin) and the [cTuning foundation](https://cTuning.org)*
