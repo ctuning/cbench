@@ -5,10 +5,19 @@
 Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbrain.svg?branch=master)](https://travis-ci.org/cknowledge/cbrain)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/your1v689smkudvx?svg=true)](https://ci.appveyor.com/project/gfursin/cbrain)
 
-A cross-platform client with a CLI and a Python API to perform collaborative and reproducible benchmarking and optimization of deep tech (AI, ML, quantum) via the open cKnowledge portal: https://cKnowledge.io
+cBrain is a cross-platform client connected with the 
+[open cKnowledge.io portal](https://cKnowledge.io)
+to perform collaborative and reproducible benchmarking,
+optimization and co-design of deep tech systems (AI, ML, quantum, IoT).
 
-* Docs: [online](https://cKnowledge.io/static/docs)
-* Platform support:
+cBrain is also a wrapper around the [low-level CK SDK](https://cKnowledge.io)
+to simplify the user experience.
+
+## Documentation
+
+* [Online docs for the CK SDK and cBrain](https://cKnowledge.io/docs)
+
+## Platform support:
 
 |               | As a host platform | As a target platform |
 |---------------|:------------------:|:--------------------:|
@@ -21,4 +30,5 @@ A cross-platform client with a CLI and a Python API to perform collaborative and
 | Android       | prototyping | ✓ |
 
 
-Copyright 2020 [cTuning foundation](https://cTuning.org)
+Copyright 2020 [Grigori Fursin](https://cKnowledge.io/@gfursin) 
+and the [cTuning foundation](https://cTuning.org)
