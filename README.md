@@ -7,9 +7,9 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yo
 
 ## Introduction
 
-cBrain is a cross-platform client connected with the 
-[open cKnowledge.io portal](https://cKnowledge.io)
-to perform collaborative and reproducible benchmarking,
+cBrain is our attemp to create a cross-platform client 
+connected with the [open cKnowledge.io portal](https://cKnowledge.io)
+to support collaborative and reproducible benchmarking,
 optimization and co-design of deep tech systems (AI, ML, quantum, IoT).
 
 cBrain is also a wrapper around the [low-level CK SDK](https://cKnowledge.io)
