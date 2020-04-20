@@ -22,10 +22,10 @@ to simplify the user experience.
 | Generic Linux | ✓ | ✓ |
 | Linux (Arm)   | ✓ | ✓ |
 | Raspberry Pi  | ✓ | ✓ |
-| MacOS         | ✓ | ✓ |
+| MacOS         | ✓ | ± |
 | Windows       | ✓ | ✓ |
+| Android       | ± | ✓ |
 | iOS           | TBD | TBD |
-| Android       | prototyping | ✓ |
 
 ## Documentation
 
