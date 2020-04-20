@@ -15,10 +15,6 @@ optimization and co-design of deep tech systems (AI, ML, quantum, IoT).
 cBrain is also a wrapper around the [low-level CK SDK](https://cKnowledge.io)
 to simplify the user experience.
 
-## Documentation
-
-* [Online docs for the CK SDK and cBrain](https://cKnowledge.io/docs)
-
 ## Platform support:
 
 |               | As a host platform | As a target platform |
@@ -31,6 +27,19 @@ to simplify the user experience.
 | iOS           | TBD | TBD |
 | Android       | prototyping | ✓ |
 
+## Documentation
 
-Copyright 2020 [Grigori Fursin](https://cKnowledge.io/@gfursin) 
-and the [cTuning foundation](https://cTuning.org)
+* [Online docs for the CK SDK and cBrain](https://cKnowledge.io/docs)
+
+## Feedback
+
+* This is an ongoing project - don't hesitate to [contact us](https://cKnowledge.org/contacts.html) 
+  if you have any feedback and suggestions!
+
+## Acknowledgments
+
+We would like to thank all [CK partners](https://cKnowledge.org/partners.html) 
+for fruitful discussions and feedback!
+
+
+**Copyright 2020 [Grigori Fursin](https://cKnowledge.io/@gfursin) and the [cTuning foundation](https://cTuning.org)**
