@@ -77,7 +77,7 @@ setup(
         "Intended Audience :: Education",
         "Intended Audience :: End Users/Desktop",
         "Intended Audience :: Information Technology",
-        "Intended Audience :: Science/Research"
+        "Intended Audience :: Science/Research",
         "Environment :: Console",
         "Environment :: Plugins",
         "Environment :: Web Environment",
