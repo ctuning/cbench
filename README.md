@@ -60,13 +60,15 @@ Participate in crowd-benchmarking:
 cb benchmark demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows
 ```
 
-See results on a public [SOTA dashboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking)
+See results on a public [SOTA dashboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking).
 
-You can also use stable Docker image to participate in crowd-benchmarking:
+You can also use the stable Docker image to participate in crowd-benchmarking:
 
 ```
 sudo docker run ctuning/cbench-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows /bin/bash -c "cb benchmark demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows"
 ```
+
+You can also check [all dependencies for this solution](https://cknowledge.io/solution/demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows/#dependencies).
 
 ## Documentation
 
