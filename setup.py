@@ -160,6 +160,8 @@ setup(
 
     keywords="reproducible benchmarking, customizable benchmarking, portable workflows, reusable computational components, reproducibility, collaborative experiments, automation, optimization, co-design, collective knowledge",
 
+    install_requires=['requests']
+
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python :: 2.7",
@@ -182,17 +184,3 @@ setup(
         "Topic :: Utilities"
        ],
 )
-
-###########################################################
-# Get release notes 
-import cbench.comm_min
-r=cbench.comm_min.send({'url':portal_url+'/api/v1/?',
-                        'action':'event', 
-                        'dict':{'type':'get-client-release-notes','version':version}})
-notes=r.get('notes','')
-if notes!='':
-   print ('*********************************************************************')
-   print ('Release notes:')
-   print ('')
-   print (notes)
-   print ('*********************************************************************')
