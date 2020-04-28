@@ -160,7 +160,7 @@ setup(
 
     keywords="reproducible benchmarking, customizable benchmarking, portable workflows, reusable computational components, reproducibility, collaborative experiments, automation, optimization, co-design, collective knowledge",
 
-    install_requires=['requests']
+    install_requires=['requests'],
 
     classifiers=[
         "Development Status :: 5 - Production/Stable",
