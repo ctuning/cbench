@@ -29,6 +29,45 @@ to simplify the user experience.
 | Android       | ± | ✓ |
 | iOS           | TBD | TBD |
 
+## MLPref crowd-benchmarking demo on Ubuntu
+
+Install prerequisites:
+
+```
+sudo apt update
+sudo apt install git wget libz-dev curl cmake
+sudo apt install gcc g++ autoconf autogen libtool
+sudo apt install libfreetype6-dev
+sudo apt install python3.7-dev
+sudo apt install -y libsm6 libxext6 libxrender-dev
+```
+
+Install cbrain:
+
+```
+python3 -m pip install cbrain
+```
+
+Initialize the [CK solution for MLPerf](https://cknowledge.io/solution/demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows):
+
+```
+cb init demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows
+```
+
+Participate in crowd-benchmarking:
+
+```
+cb benchmark demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows
+```
+
+See results on a public [SOTA dashboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking)
+
+You can also use stable Docker image to participate in crowd-benchmarking:
+
+```
+sudo docker run ctuning/cbench-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows /bin/bash -c "cb benchmark demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows"
+```
+
 ## Documentation
 
 * [Online docs for the Collective Knowledge technology](https://cKnowledge.io/docs)
