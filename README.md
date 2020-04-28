@@ -1,18 +1,20 @@
-[![PyPI version](https://badge.fury.io/py/cbrain.svg)](https://badge.fury.io/py/cbrain)
-[![Python Version](https://img.shields.io/badge/python-2.7%20|%203.4+-blue.svg)](https://pypi.org/project/cbrain)
+[![PyPI version](https://badge.fury.io/py/cbench.svg)](https://badge.fury.io/py/cbench)
+[![Python Version](https://img.shields.io/badge/python-2.7%20|%203.4+-blue.svg)](https://pypi.org/project/cbench)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbrain.svg?branch=master)](https://travis-ci.org/cknowledge/cbrain)
-Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/your1v689smkudvx?svg=true)](https://ci.appveyor.com/project/gfursin/cbrain)
+Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbench.svg?branch=master)](https://travis-ci.org/cknowledge/cbench)
+Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/your1v689smkudvx?svg=true)](https://ci.appveyor.com/project/gfursin/cbench)
 
 ## Introduction
 
-cBrain is our attempt to create a cross-platform client 
-connected with the [open cKnowledge.io portal](https://cKnowledge.io)
+cBench is a cross-platform client connected with the 
+[open cKnowledge.io portal](https://cKnowledge.io/results)
 to support collaborative and reproducible benchmarking,
-optimization and co-design of deep tech systems (AI, ML, quantum, IoT).
+optimization and co-design of computational systems
+based on emerging technologies (AI, ML, quantum, IoT).
 
-cBrain is also a wrapper around the [low-level CK SDK](https://cKnowledge.io)
+cBench is a part of the [Collective Knowledge technology](https://cKnowledge.org) 
+and a wrapper around the [low-level CK SDK](https://github.com/ctuning/ck)
 to simplify the user experience.
 
 ## Platform support:
@@ -29,7 +31,7 @@ to simplify the user experience.
 
 ## Documentation
 
-* [Online docs for the CK SDK and cBrain](https://cKnowledge.io/docs)
+* [Online docs for the Collective Knowledge technology](https://cKnowledge.io/docs)
 
 ## Feedback
 
@@ -42,4 +44,4 @@ We would like to thank all [CK partners](https://cKnowledge.org/partners.html)
 for fruitful discussions and feedback!
 
 
-*Copyright 2020 [the cTuning foundation](https://cTuning.org)*
+*Copyright 2020 [cTuning foundation and cKnowledge SAS](https://cTuning.org)*

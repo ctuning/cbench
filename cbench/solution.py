@@ -426,7 +426,7 @@ def init(i):
        ##############################################################
        # Initializing CB config ...
        ck.out(config.CR_LINE)
-       ck.out('Initializing cBrain client for this solution ...')
+       ck.out('Initializing cBench client for this solution ...')
 
        if pcfg!='' and os.path.isdir(pcfg):
           pcfg2=os.path.join(pcfg, '.cm', 'meta.json')

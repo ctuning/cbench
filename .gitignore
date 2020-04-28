@@ -4,8 +4,8 @@ dist
 dist/*
 
 MANIFEST
-cbrain.*/*
-cbrain.*
+cbench.*/*
+cbench.*
 *.pyc
 __pycache__
 .cache/

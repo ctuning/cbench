@@ -7,7 +7,7 @@
 
 # CK entry to keep client configuration info
 CK_CFG_REPO_UOA="local"
-CK_CFG_DATA_UOA="cbrain"
+CK_CFG_DATA_UOA="cbench"
 CK_CFG_MODULE_UID="b34231a3467566f8" # ck info module:cfg
 
 CK_CFG_MODULE_REPO_UOA="befd7892b0d469e9" # CK module UOA for REPO

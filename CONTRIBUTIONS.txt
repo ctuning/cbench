@@ -1,9 +1,9 @@
-Collective Knowledge client (cBrain) uses the standard Apache2 license. 
+cBench uses the standard Apache2 license. 
 
 Contributions are very welcome. We suggest you to fork the code 
 on GitHub and then submit a pull request:
 
-* https://github.com/ctuning/cr/issues
+* https://github.com/cknowledge/cbench/issues
 
 Thank you for supporting this community project!
 
@@ -11,7 +11,7 @@ Contributors:
 
 N: Grigori Fursin
 E: Grigori.Fursin@cTuning.org
-H: http://fursin.net
+H: https://fursin.net
 O: cTuning foundation and cKnowledge SAS
 C: author
 
