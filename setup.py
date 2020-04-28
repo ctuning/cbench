@@ -141,9 +141,9 @@ setup(
     },
 
     install_requires=[
+      'requests',
       'click>=7.0',
       'ck',
-      'requests',
       'virtualenv'
     ],
 
@@ -159,8 +159,6 @@ setup(
     zip_safe=False,
 
     keywords="reproducible benchmarking, customizable benchmarking, portable workflows, reusable computational components, reproducibility, collaborative experiments, automation, optimization, co-design, collective knowledge",
-
-    install_requires=['requests'],
 
     classifiers=[
         "Development Status :: 5 - Production/Stable",
