@@ -15,33 +15,6 @@ try:
 except ImportError:
     pass
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-
-try:
-    from setuptools import convert_path
-except ImportError:
-    from distutils.util import convert_path
-
-try:
-    from setuptools.command.install import install
-except ImportError:
-    from distutils.command.install import install
-
-try:
-   from setuptools.command.install_scripts import install_scripts
-except ImportError:
-    from distutils.command.install_scripts import install_scripts
-
-try:
-   from setuptools.command.install_lib import install_lib
-except ImportError:
-    from distutils.command.install_lib import install_lib
-
-from distutils.sysconfig import get_python_lib
-
 ############################################################
 # Version
 version = imp.load_source(
@@ -49,65 +22,6 @@ version = imp.load_source(
 
 # Default portal
 portal_url='https://cKnowledge.io'
-
-dir_install_script=""
-
-############################################################
-class custom_install(install):
-    def run(self):
-        global dir_install_script
-
-        install.run(self)
-
-        # Check if detected script directory
-        if dir_install_script!="" and os.path.isdir(dir_install_script):
-           # Check which python interpreter is used
-           python_bin=sys.executable
-           real_python_bin=os.path.abspath(python_bin)
-
-           if os.path.isfile(python_bin):
-              # Attempt to write to $SCRIPTS/ck-python.cfg
-              file_type='wb'
-              if sys.version_info[0]>2:
-                 file_type='w'
-
-              p=os.path.join(dir_install_script, 'cb-python.cfg')
-
-              try:
-                 with open(p, file_type) as f:
-                    f.write(python_bin+'\n')
-
-                 print ('')
-                 print ("Writing cBench python executable ("+python_bin+") to "+p)
-                 print ('')
-              except Exception as e: 
-                 print ("warning: can\'t write info about cBench python executable to "+p+" ("+format(e)+")")
-                 pass
-
-        # Check update 
-        import cbench.comm_min
-        r=cbench.comm_min.send({'url':portal_url+'/api/v1/?',
-                                'action':'event', 
-                                'dict':{'type':'check-cbench-update','version':version}})
-        notes=r.get('notes','')
-        if notes!='':
-           print (notes)
-
-############################################################
-class custom_install_scripts(install_scripts):
-   def run(self):
-       global dir_install_script
-
-       install_scripts.run(self)
-
-       dir_install_script=os.path.abspath(self.install_dir)
-
-       if dir_install_script!=None and dir_install_script!="" and os.path.isdir(dir_install_script):
-          print ('')
-          print ("Detected script installation directory: "+dir_install_script)
-          print ('')
-
-       return
 
 
 ############################################################
@@ -134,11 +48,6 @@ setup(
     package_data={"cbench":['static/*']},
 
     include_package_data=True,
-
-    cmdclass={
-     'install': custom_install, 
-     'install_scripts': custom_install_scripts
-    },
 
     install_requires=[
       'requests',
@@ -182,3 +91,17 @@ setup(
         "Topic :: Utilities"
        ],
 )
+
+###########################################################
+# Get release notes 
+import cbench.comm_min
+r=cbench.comm_min.send({'url':portal_url+'/api/v1/?',
+                        'action':'event', 
+                        'dict':{'type':'get-cbench-release-notes','version':version}})
+notes=r.get('notes','')
+if notes!='':
+   print ('*********************************************************************')
+   print ('Release notes:')
+   print ('')
+   print (notes)
+   print ('*********************************************************************')

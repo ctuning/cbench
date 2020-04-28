@@ -134,8 +134,23 @@ def update(i):
     title='Bootstrapping'
     if cfg.get('bootstrapped','')=='yes': title='Updating'
 
-    ck.out(title+' cK client to support portable actions and workflows:')
+    ck.out(title+' cBench to support portable actions and workflows:')
     ck.out('')
+
+    # Check release notes 
+    server_url=cfg.get('server_url','')
+    if server_url=='': server_url='https://cKnowledge.io/api/v1/?'
+
+    from . import comm_min
+    r=comm_min.send({'url':server_url,
+                     'action':'event', 
+                     'dict':{'type':'get-cbench-bootstrap-notes'}})
+
+    notes=r.get('notes','')
+    if notes!='':
+       ck.out('***********************************************')
+       ck.out(notes)
+       ck.out('***********************************************')
 
     for x in CR_SOLUTION_CK_COMPONENTS:
         r=obj.download({'cid':x['cid'], 'version':x.get('version',''), 'force':force})

@@ -13,7 +13,7 @@ import ck.kernel as ck
 import json
 
 ##############################################################################
-# Setup cK client
+# Setup cBench
 
 def setup(i):
 
@@ -114,7 +114,7 @@ def setup(i):
 
     # Print (new/updated) configuration
     ck.out('')
-    ck.out('Current cK client configuration:')
+    ck.out('Current cBench configuration:')
 
     ck.out('')
     ck.out(json.dumps(cfg, indent=2, sort_keys=True))
