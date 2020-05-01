@@ -314,6 +314,8 @@ def access(filename,
 @click.option('-h', '--hostname', 'hostname', required=False, default='')
 @click.option('-w', '--workflow', 'workflow', required=False, default='')
 @click.option('-wr', '--workflow_repo_url', 'workflow_repo_url', required=False, default='')
+@click.option('-wcb', '--workflow_cmd_before', 'workflow_cmd_before', required=False, default='')
+@click.option('-wca', '--workflow_cmd_after', 'workflow_cmd_after', required=False, default='')
 @click.option('-wc', '--workflow_cmd', 'workflow_cmd', required=False, default='')
 @click.option('-wce', '--workflow_cmd_extra', 'workflow_cmd_extra', required=False, default='')
 @click.option('-wi', '--workflow_input', 'workflow_input', required=False, default='') # Input source (stream, webcam, etc)
@@ -349,6 +351,8 @@ def init(uid,
          hostname,
          workflow,
          workflow_repo_url,
+         workflow_cmd_before,
+         workflow_cmd_after,
          workflow_cmd,
          workflow_cmd_extra,
          workflow_input,
@@ -389,6 +393,8 @@ def init(uid,
                      'hostname':hostname,
                      'workflow_repo_url':workflow_repo_url,
                      'workflow':workflow,
+                     'workflow_cmd_before':workflow_cmd_before,
+                     'workflow_cmd_after':workflow_cmd_after,
                      'workflow_cmd':workflow_cmd,
                      'workflow_cmd_extra':workflow_cmd_extra,
                      'workflow_input':workflow_input,

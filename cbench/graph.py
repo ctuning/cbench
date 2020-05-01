@@ -77,6 +77,12 @@ def init(i):
             }
     """
 
+    # Get main configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r.get('dict',{})
+    pcfg=r.get('path','')
+
     # CID ###########################################################        
     uid=i['uid']
     if uid==None: uid=''
@@ -308,8 +314,6 @@ def push(i):
        data+=data2
 
     # Send request
-
-    # Get current configuration
     r=config.load({})
     if r['return']>0: return r
     cfg=r['dict']

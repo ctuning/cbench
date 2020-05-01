@@ -185,6 +185,12 @@ def init(i):
     workflow_cmd=i.get('workflow_cmd','')
     if workflow_cmd=='': workflow_cmd=dd.get('workflow_cmd','')
 
+    workflow_cmd_before=i.get('workflow_cmd_before','')
+    if workflow_cmd_before=='': workflow_cmd_before=dd.get('workflow_cmd_before','')
+
+    workflow_cmd_after=i.get('workflow_cmd_after','')
+    if workflow_cmd_after=='': workflow_cmd_after=dd.get('workflow_cmd_after','')
+
     workflow_cmd_extra=i.get('workflow_cmd_extra','')
     if workflow_cmd_extra=='': workflow_cmd_extra=dd.get('workflow_cmd_extra','')
 
@@ -227,6 +233,7 @@ def init(i):
 
     for k in ['host_os', 'target_os', 'device_id', 'hostname',
               'workflow', 'workflow_repo_url', 
+              'workflow_cmd_before', 'workflow_cmd_after',
               'workflow_cmd', 'workflow_cmd_extra', 'workflow_input', 
               'workflow_input_dir', 'workflow_output_dir', 'result_file',
               'python_version', 'python_version_from', 'python_version_to',
@@ -698,7 +705,13 @@ def init(i):
 
     pdeps=os.path.join(p, 'resolved-deps.json')
 
-    s=hosd_extra['extra_cmd']+'ck run '+workflow+' --cmd_key='+workflow_cmd+' '+workflow_cmd_extra+' --record_deps="'+pdeps+'" --skip_exec'
+    s=''
+
+    if workflow_cmd_before!='': s+=workflow_cmd_before+'\n'
+
+    s+=hosd_extra['extra_cmd']+'ck run '+workflow+' --cmd_key='+workflow_cmd+' '+workflow_cmd_extra+' --record_deps="'+pdeps+'" --skip_exec\n'
+
+    if workflow_cmd_after!='': s+=workflow_cmd_after+'\n'
 
     if hos!='': s+=' --host_os='+hos
     if tos!='': s+=' --target_os='+tos
@@ -865,6 +878,12 @@ def run(i):
             }
     """
 
+    # Get main configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r.get('dict',{})
+    pcfg=r.get('path','')
+
     cur_dir=os.getcwd()
 
     # Check if Windows or Linux
@@ -904,6 +923,8 @@ def run(i):
     tdid=dd.get('device_id','')
 
     workflow=dd.get('workflow','')
+    workflow_cmd_before=dd.get('workflow_cmd_before','')
+    workflow_cmd_after=dd.get('workflow_cmd_after','')
     workflow_cmd=dd.get('workflow_cmd','')
     workflow_cmd_extra=dd.get('workflow_cmd_extra','')
 
@@ -921,6 +942,8 @@ def run(i):
     cmd=cmd0
     cmd+=hosd['env_call']+' '+hosd['env_quotes_if_space']+os.path.join(p, 'venv', hosd_extra['venv_bin'], hosd_extra['venv_activate'])+hosd['env_quotes_if_space']+'\n'
 
+    if workflow_cmd_before!='': cmd+=workflow_cmd_before+'\n'
+
     if xcmd!='':
       s=xcmd
     else:
@@ -934,6 +957,8 @@ def run(i):
       if tdid!='': s+=' --device_id='+tdid
 
     cmd+=s+'\n'
+
+    if workflow_cmd_after!='': cmd+=workflow_cmd_after+'\n'
 
     ck.out('')
     ck.out(s)
@@ -969,6 +994,12 @@ def benchmark(i):
     """
     import datetime
     import time 
+
+    # Get main configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r.get('dict',{})
+    pcfg=r.get('path','')
 
     sdate= datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
     t = time.time()
@@ -1015,6 +1046,8 @@ def benchmark(i):
     tdid=dd.get('device_id','')
 
     workflow=dd.get('workflow','')
+    workflow_cmd_before=dd.get('workflow_cmd_before','')
+    workflow_cmd_after=dd.get('workflow_cmd_after','')
     workflow_cmd=dd.get('workflow_cmd','')
     workflow_cmd_extra=dd.get('workflow_cmd_extra','')
 
@@ -1141,6 +1174,8 @@ def benchmark(i):
 
       cmd=cmd0
 
+      if workflow_cmd_before!='': cmd+=workflow_cmd_before+'\n'
+
       if xcmd!='':
         s=xcmd
       else:
@@ -1153,15 +1188,16 @@ def benchmark(i):
         if tos!='': s+=' --target_os='+tos
         if tdid!='': s+=' --device_id='+tdid
       ck.out(config.CR_LINE)
-      ck.out('Command: '+cmd)
+      ck.out('Command: '+s)
       ck.out('')
 
       cmd+=s+'\n'
 
+      if workflow_cmd_after!='': cmd+=workflow_cmd_after+'\n'
+
       ck.out('')
       ck.out(s)
       ck.out('')
-
 
       ii={'action':'shell',
           'module_uoa':'os',
@@ -1524,6 +1560,13 @@ def publish_result(i):
               (error) [str]    - error string if return>0 
             }
     """
+
+    # Get main configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r.get('dict',{})
+    pcfg=r.get('path','')
+
     xcmd=i.get('cmd','')
     if xcmd==None: xcmd=''
     xcmd=xcmd.strip()
