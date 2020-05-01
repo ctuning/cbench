@@ -709,13 +709,15 @@ def init(i):
 
     if workflow_cmd_before!='': s+=workflow_cmd_before+'\n'
 
-    s+=hosd_extra['extra_cmd']+'ck run '+workflow+' --cmd_key='+workflow_cmd+' '+workflow_cmd_extra+' --record_deps="'+pdeps+'" --skip_exec\n'
-
-    if workflow_cmd_after!='': s+=workflow_cmd_after+'\n'
+    s+=hosd_extra['extra_cmd']+'ck run '+workflow+' --cmd_key='+workflow_cmd+' '+workflow_cmd_extra+' --record_deps="'+pdeps+'" --skip_exec'
 
     if hos!='': s+=' --host_os='+hos
     if tos!='': s+=' --target_os='+tos
     if tdid!='': s+=' --device_id='+tdid
+
+    s+='\n'
+
+    if workflow_cmd_after!='': s+=workflow_cmd_after+'\n'
 
     ck.out('')
     ck.out(s)

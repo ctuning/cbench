@@ -1,3 +1,6 @@
+* 1.2.6
+  Fixed bug with extra CMD
+
 * 1.2.5
   New fixes for solution/graph init to reflrect cKnowledge.io updates
 
