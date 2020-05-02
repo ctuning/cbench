@@ -717,7 +717,8 @@ def init(i):
 
     s+='\n'
 
-    if workflow_cmd_after!='': s+=workflow_cmd_after+'\n'
+#    Here we do not need post-processing (often fail)
+#    if workflow_cmd_after!='': s+=workflow_cmd_after+'\n'
 
     ck.out('')
     ck.out(s)
