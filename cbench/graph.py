@@ -66,6 +66,7 @@ def init(i):
               uid [str] - graph identifyer
               (version) [str] - graph version
               (desc_file) [str] - file with graph description
+              (tags) [str] - tags separated by comma
             }
 
     Output: {
@@ -122,7 +123,9 @@ def init(i):
           extra_info=r['info'].get('control',{})
 
     # Check if init from scratch and no title
-    if not found or data_name=='':
+    if i.get('name')!=None and i.get('name','')!='':
+       data_name=i['name'].strip()
+    elif not found or data_name=='':
        r=ck.inp({'text':'Select a title for your graph: '})
        if r['return']>0: return r
 
@@ -142,14 +145,26 @@ def init(i):
        meta['meta']['info']=x
 
     # Adding tags
-    if not found or (len(tags)==1 and 'result' in tags):
+    if i.get('tags')!=None and i.get('tags','')!='':
+       xtags=i['tags'].strip().split(',')
+
+       for t in xtags:
+           t1=t.strip()
+           if t1!='' and t1 not in tags:
+              tags.append(t1)
+
+       meta['tags']=tags
+
+    elif not found or (len(tags)==1 and 'result' in tags):
        r=ck.inp({'text':'Enter tags for your graph separated by commas: '})
        if r['return']>0: return r
 
        xtags=r['string'].strip().split(',')
 
        for t in xtags:
-           tags.append(t.strip())
+           t1=t.strip()
+           if t1!='' and t1 not in tags:
+              tags.append(t1)
 
        meta['tags']=tags
 

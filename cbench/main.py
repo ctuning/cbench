@@ -224,10 +224,14 @@ def update(force):
 
 @click.option('-v', '--version', 'version', required=False)
 @click.option('-d', '--desc_file', 'desc_file', required=False)
+@click.option('-t', '--tags', 'tags', required=False)
+@click.option('-n', '--name', 'name', required=False)
 
 def init_graph(uid,
                version,
-               desc_file):
+               desc_file,
+               tags,
+               name):
     '''
     Init graph at the portal.
 
@@ -236,7 +240,9 @@ def init_graph(uid,
     from . import graph
     r=graph.init({'uid':uid,
                   'version':version,
-                  'desc_file':desc_file})
+                  'desc_file':desc_file,
+                  'tags':tags,
+                  'name':name})
 
     if r['return']>0: process_error(r)
     return 0
