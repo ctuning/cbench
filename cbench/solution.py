@@ -1242,9 +1242,12 @@ def benchmark(i):
         rd['solution_run_date']=sdate
         rd['solution_duration']=elapsed
 
+        sworkflow=workflow.split(':')
+        if len(sworkflow)>1:
+           rd['program_workflow_uoa']=sworkflow[1]
+
         from . import __version__
         rd['client_version']=__version__
-
 
         rx=ck.flatten_dict({'dict':rd})
         if rx['return']>0: return rx
@@ -1334,7 +1337,8 @@ def benchmark(i):
                   cdata={}
 
                   for k in keys:
-                      ok=k['out_key']
+                      ok=k.get('out_key','')
+                      if ok=='': ok=k['key1']
 
                       kk=[k.get('key1',''), k.get('key2',''), k.get('key3',''), k.get('key4','')]
 
@@ -1364,7 +1368,12 @@ def benchmark(i):
                                       vv=0
                                 else:
                                    vv+=', '
-                                vv+=v
+
+                                # Check if list or dict
+                                if type(v)==list or type(v)==dict:
+                                   vv=v
+                                else:
+                                   vv+=v
 
                       if vv!='':
                          cdata[ok]=vv
