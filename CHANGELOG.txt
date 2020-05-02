@@ -1,3 +1,7 @@
+* 1.2.8
+  Added new flags to graph init
+  Added solution examples
+
 * 1.2.7
   Improved graphs for crowd-benchmarking
 
