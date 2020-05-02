@@ -18,6 +18,6 @@ cb init mlperf-inference-v0.5-detection-openvino-ssd-mobilenet-coco-500-linux \
         --result_file="tmp/tmp-ck-timer.json" \
         --python_version_from="3.6" \
         --python_version_to="3.7.99" \
-        --graph_convertor="$PWD/graph-convertor.json" \
-        --update_meta_and_stop
+        --graph_convertor="$PWD/graph-convertor.json"
+#        --update_meta_and_stop
 
