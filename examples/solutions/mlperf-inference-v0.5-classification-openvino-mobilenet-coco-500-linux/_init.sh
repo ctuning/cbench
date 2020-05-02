@@ -12,11 +12,12 @@ cb init mlperf-inference-v0.5-classification-openvino-mobilenet-coco-500-linux \
         --workflow_cmd="image-classification" \
         --workflow_cmd_extra="--repetitions=1 --no_state_check --skip_print_timers --env.CK_OPENVINO_MODEL_NAME=mobilenet --env.CK_LOADGEN_SCENARIO=Offline --env.CK_LOADGEN_MODE=Accuracy --env.CK_LOADGEN_DATASET_SIZE=500 --env.CK_OPENVINO_NTHREADS=\$NPROCS --env.CK_OPENVINO_NSTREAMS=\$NPROCS --env.CK_OPENVINO_NIREQ=\$NPROCS" \
         --workflow_output_dir="tmp" \
+        --add_extra_meta_from_file="$PWD/extra-meta.json" \
         --desc_prereq="$PWD/prereq.txt" \
         --desc_prepare="$PWD/prepare.txt" \
         --result_file="tmp/tmp-ck-timer.json" \
         --python_version_from="3.6" \
         --python_version_to="3.7.99" \
-        --graph_convertor="$PWD/graph-convertor.json"
+        --graph_convertor="$PWD/graph-convertor.json" 
 #        --update_meta_and_stop
 
