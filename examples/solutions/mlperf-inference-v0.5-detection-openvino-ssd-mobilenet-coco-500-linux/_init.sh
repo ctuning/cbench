@@ -5,7 +5,7 @@ export CK_TOOLS=$PWD/CK-TOOLS
 
 cb init mlperf-inference-v0.5-detection-openvino-ssd-mobilenet-coco-500-linux \
         --name="Object detection; MLPerf inference v0.5; OpenVINO; SSD MobileNet v1; COCO; 500 images validation; Linux; benchmark; portable workflows" \
-        --tags="validated,object-detection,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,ssd-mobilenet,ssd-mobilenet-v1,coco,500,benchmark,linux,portable-workflows" \
+        --tags="crowd-benchmarking,validated,object-detection,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,ssd-mobilenet,ssd-mobilenet-v1,coco,500,benchmark,linux,portable-workflows" \
         --workflow_repo_url="local" \
         --workflow="program:mlperf-inference-v0.5" \
         --workflow_cmd_before="export NPROCS=\`grep -c processor /proc/cpuinfo\`" \
