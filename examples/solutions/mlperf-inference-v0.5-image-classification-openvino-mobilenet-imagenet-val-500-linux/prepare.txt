@@ -79,16 +79,3 @@ ck install package --tags=lib,python-package,cv2,opencv-python-headless
 ck install package --tags=image-classification,model,tf,mlperf,mobilenet-v1-1.0-224,non-quantized
 ck install package --tags=model,openvino,mobilenet --safe
 #-----------------------------------------------------------------------------#
-
-
-#-----------------------------------------------------------------------------#
-# Step 8. Install the COCO 2017 validation dataset (5,000 images).
-#-----------------------------------------------------------------------------#
-# Download the dataset to the default path. Remove all training annotations (~765 MB).
-echo | ck install package --tags=object-detection,dataset,coco.2017,val,original,full && ck virtual env --tags=object-detection,dataset,coco.2017,val,original,full --shell_cmd='rm $CK_ENV_DATASET_COCO_LABELS_DIR/*train2017.json'
-# Install Python COCO API.
-#ck install package --tags=lib,python-package,cython # already installed
-#ck install package --tags=lib,python-package,numpy # already installed
-ck install package --tags=lib,python-package,matplotlib
-ck install package --tags=tool,coco,api
-#-----------------------------------------------------------------------------#

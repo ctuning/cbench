@@ -3,9 +3,9 @@
 export CK_REPOS=$PWD/CK
 export CK_TOOLS=$PWD/CK-TOOLS
 
-cb init mlperf-inference-v0.5-classification-openvino-resnet50-coco-500-linux \
-        --name="Object detection; MLPerf inference v0.5; OpenVINO; ResNet 50; COCO; 500 images validation; Linux; benchmark; portable workflows" \
-        --tags="validated,object-detection,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,resnet,resnet50,coco,500,benchmark,linux,portable-workflows" \
+cb init mlperf-inference-v0.5-image-classification-openvino-resnet50-imagenet-val-500-linux \
+        --name="Object detection; MLPerf inference v0.5; OpenVINO; ResNet 50; ImageNet; 500 images validation; Linux; benchmark; portable workflows" \
+        --tags="validated,image-classification,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,resnet,resnet50,imagenet,500,benchmark,linux,portable-workflows" \
         --workflow_repo_url="local" \
         --workflow="program:mlperf-inference-v0.5" \
         --workflow_cmd_before="export NPROCS=\`grep -c processor /proc/cpuinfo\`" \
