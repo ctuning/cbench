@@ -1,8 +1,6 @@
 # Tested on Ubuntu 18.04 
 # (including Docker and Windows 10 Sybsystem for Linux)
 
-# These dependencies are needed to rebuild COCO API:
-
  sudo apt update
 
  sudo apt install git wget libz-dev zip curl 
