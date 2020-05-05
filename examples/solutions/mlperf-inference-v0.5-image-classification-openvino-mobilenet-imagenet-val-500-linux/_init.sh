@@ -4,8 +4,8 @@ export CK_REPOS=$PWD/CK
 export CK_TOOLS=$PWD/CK-TOOLS
 
 cb init mlperf-inference-v0.5-image-classification-openvino-mobilenet-imagenet-val-500-linux \
-        --name="Object detection; MLPerf inference v0.5; OpenVINO; MobileNet v1 1.0 224; ImageNet; 500 images validation; Linux; benchmark; portable workflows" \
-        --tags="validated,image-classification,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,mobilenet,mobilenet-v1,imagenet,500,benchmark,linux,portable-workflows" \
+        --name="Image Classification; MLPerf inference v0.5; OpenVINO; MobileNet v1 1.0 224; ImageNet; 500 images validation; Linux; benchmark; portable workflows" \
+        --tags="crowd-benchmarking,validated,image-classification,mlperf,mlperf-inference,mlperf-inference-v0.5,openvino,mobilenet,mobilenet-v1,coco,500,benchmark,linux,portable-workflows" \
         --workflow_repo_url="local" \
         --workflow="program:mlperf-inference-v0.5" \
         --workflow_cmd_before="export NPROCS=\`grep -c processor /proc/cpuinfo\`" \
