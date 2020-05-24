@@ -5,17 +5,20 @@
 Linux/MacOS: [![Build Status](https://travis-ci.org/cknowledge/cbench.svg?branch=master)](https://travis-ci.org/cknowledge/cbench)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yjq5myrrrkx3rydc?svg=true)](https://ci.appveyor.com/project/gfursin/cbench)
 
+
 ## Introduction
 
 cBench is a cross-platform client connected with the 
-[open cKnowledge.io portal](https://cKnowledge.io/results)
-to support collaborative and reproducible benchmarking,
-optimization and co-design of computational systems
-based on emerging technologies (AI, ML, quantum, IoT).
+[open Collective Knowledge portal](https://cKnowledge.io/results)
+to help researchers and practitioners 
+reproduce SOTA ML and systems research
+and share results on live SOTA scoreobards:
+[demo](https://cKnowledge.io/test).
 
-cBench is a part of the [Collective Knowledge technology](https://cKnowledge.org) 
-and a wrapper around the [low-level CK SDK](https://github.com/ctuning/ck)
-to simplify the user experience.
+cBench is a part of the [Collective Knowledge project (CK)](https://cKnowledge.org)
+and uses [portable CK solutions](https://cknowledge.io/docs/intro/introduction.html#portable-ck-solution)
+to describe how to download, build, benchmark and optimize applications
+across different hardware, software, models and data sets.
 
 ## Platform support:
 
@@ -29,7 +32,8 @@ to simplify the user experience.
 | Android       | ± | ✓ |
 | iOS           | TBD | TBD |
 
-## MLPref crowd-benchmarking demo on Ubuntu
+
+## Object detection crowd-benchmarking demo on Ubuntu
 
 Install prerequisites:
 
@@ -69,6 +73,8 @@ sudo docker run ctuning/cbench-obj-detection-coco-tf-cpu-benchmark-linux-portabl
 ```
 
 You can also check [all dependencies for this solution](https://cknowledge.io/solution/demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows/#dependencies).
+
+
 
 ## Documentation
 
