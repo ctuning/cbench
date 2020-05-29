@@ -17,7 +17,7 @@ and share results on live SOTA scoreobards:
 
 cBench is a part of the [Collective Knowledge project (CK)](https://cKnowledge.org)
 and uses [portable CK solutions](https://cknowledge.io/docs/intro/introduction.html#portable-ck-solution)
-to describe how to download, build, benchmark and optimize applications
+describing how to download, build, benchmark and optimize applications
 across different hardware, software, models and data sets.
 
 ## Platform support:
@@ -91,4 +91,4 @@ We would like to thank all [CK partners](https://cKnowledge.org/partners.html)
 for fruitful discussions and feedback!
 
 
-*Copyright 2020 [cTuning foundation and cKnowledge SAS](https://cTuning.org)*
+*Copyright 2020 [cTuning foundation](https://cTuning.org)*

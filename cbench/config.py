@@ -124,6 +124,8 @@ def update(i):
             }
     """
 
+    import os
+
     global bootstrapping
     bootstrapping=True
 
@@ -153,11 +155,52 @@ def update(i):
        ck.out(notes)
        ck.out('***********************************************')
 
-    for x in CR_SOLUTION_CK_COMPONENTS:
-        r=obj.download({'cid':x['cid'], 'version':x.get('version',''), 'force':force})
-        if r['return']>0: 
-           if r['return']!=8: return r
-           else: ck.out('    Skipped - already exists!')
+    lst_all=[]
+
+    sbf=os.environ.get('CB_SAVE_BOOTSTRAP_FILES','')
+
+    if sbf=='':
+       fboot='cb-bootstrap-20200529'
+       files=[fboot+'.json']
+
+       if os.name=='nt':
+          files.append(fboot+'-win.json')
+
+       for fn in files:
+           r=ck.gen_tmp_file({'prefix':'cb-bootstrap-', 'suffix':'.json'})
+           if r['return']>0: return r
+           ftmp=r['file_name']
+
+           burl=CR_DEFAULT_SERVER+'/static/bootstrap/'+fn
+
+           ck.out('Downloading '+burl)
+
+           from . import comm
+
+           rx=comm.download_file({'url':burl, 'file':ftmp})
+           if rx['return']>0: return rx
+
+           rx=ck.load_json_file({'json_file':ftmp})
+           if rx['return']>0: return rx
+
+           lst_all+=rx['dict']
+
+           os.remove(ftmp)
+
+       r=obj.download({'components':lst_all, 'force':force})
+       if r['return']>0 and r['return']!=8: return r
+
+    else:
+       for x in CR_SOLUTION_CK_COMPONENTS:
+           r=obj.download({'cid':x['cid'], 'version':x.get('version',''), 'force':force})
+           if r['return']>0: 
+              if r['return']!=8: return r
+              else: ck.out('    Skipped - already exists!')
+           else:
+              lst_all+=r['components']
+
+       rx=ck.save_json_to_file({'json_file':sbf, 'dict':lst_all, 'sort_keys':'yes'})
+       if rx['return']>0: return rx
 
     ck.out('')
 

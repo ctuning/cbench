@@ -511,8 +511,12 @@ def download(i):
 
     """
     Input:  {
+              components - pre-loaded components from bootstrapping
+               or
               cid [str] - CK CID of format (repo UOA:)module UOA:data UOA
                           (can use wildcards)
+
+
               (version) [str] - assign version
               (force) [bool] - if True, force download even if components already exists
 
@@ -527,51 +531,70 @@ def download(i):
             }
     """
 
-    # CID ###########################################################        
-    cid=i.get('cid')
-
-    if cid=='' or cid==None: 
-       return {'return':1, 'error':'CK entry (CID) is not defined'}
-
-    version=i.get('version')
-    if version==None: version=''
+    sbf=os.environ.get('CB_SAVE_BOOTSTRAP_FILES','')
 
     force=i.get('force')
     al=i.get('all')
 
     skip_module_check=i.get('skip_module_check',False)
 
-    # Parse CID
-    r=ck.parse_cid({'cid':cid})
-    if r['return']>0: return r
-
-    repo_uoa=r.get('repo_uoa','')
-    data_uoa=r.get('data_uoa','')
-    module_uoa=r.get('module_uoa','')
-
     tags=i.get('tags','')
 
     spaces=i.get('spaces','')
 
-    # Get current configuration
-    r=config.load({})
-    if r['return']>0: return r
-    cfg=r['dict']
+    lst=i.get('components',[])
 
-    # Sending request to download
-    r=comm.send({'config':cfg,
-                 'action':'download',
-                 'dict':{
-                   'module_uoa':module_uoa,
-                   'data_uoa':data_uoa,
-                   'version':version,
-                   'tags':tags
-                 }
-                })
-    if r['return']>0: 
-       return r
+    rr={'return':0}
+ 
+    if len(lst)>0:
+       preloaded=True
+       msg='Processing'
+       msg2='processed'
+       skip_module_check=True
 
-    lst=r['components']
+       repo_uoa='local'
+
+       ck.cfg['check_missing_modules']='no' # Important not to check missing modules!
+    else:
+       preloaded=False
+       msg='Downloading'
+       msg2='downloaded'
+
+       # CID ###########################################################        
+       cid=i.get('cid')
+       if cid=='' or cid==None: 
+          return {'return':1, 'error':'CK entry (CID) is not defined'}
+
+       version=i.get('version')
+       if version==None: version=''
+
+        # Parse CID
+       r=ck.parse_cid({'cid':cid})
+       if r['return']>0: return r
+
+       repo_uoa=r.get('repo_uoa','')
+       data_uoa=r.get('data_uoa','')
+       module_uoa=r.get('module_uoa','')
+
+       # Get current configuration
+       r=config.load({})
+       if r['return']>0: return r
+       cfg=r['dict']
+
+       # Sending request to download
+       rr=comm.send({'config':cfg,
+                     'action':'download',
+                     'dict':{
+                       'module_uoa':module_uoa,
+                       'data_uoa':data_uoa,
+                       'version':version,
+                       'tags':tags
+                     }
+                    })
+       if rr['return']>0: 
+          return rr
+
+       lst=rr['components']
 
     for l in lst:
 
@@ -590,7 +613,7 @@ def download(i):
 
         xcid=muoa+':'+duoa
 
-        ck.out('* Downloading cK component "'+xcid+'" ('+str(fsize)+' bytes)')
+        ck.out('* '+msg+' CK component "'+xcid+'" ('+str(fsize)+' bytes)')
 
         # Check if module exists
         if not skip_module_check:
@@ -606,6 +629,7 @@ def download(i):
 
 # FGG: we should not add "version" for dependencies or related components since it's not the same!
 #              r=download({'cid':x, 'force':force, 'version':version, 'skip_module_check':True, 'all':al})
+
               r=download({'cid':x, 'force':force, 'skip_module_check':True, 'all':al})
               if r['return']>0: return r
 
@@ -614,7 +638,8 @@ def download(i):
         r=ck.access({'action':'find',
                      'common_func':'yes',
                      'repo_uoa':repo_uoa,
-                     'module_uoa':muid,
+#                     'module_uoa':muid,
+                     'module_uoa':muoa,
                      'data_uoa':duoa})
         if r['return']==0:
            if not force:
@@ -625,7 +650,8 @@ def download(i):
            r=ck.access({'action':'add',
                         'common_func':'yes',
                         'repo_uoa':repo_uoa,
-                        'module_uoa':muid,
+#                        'module_uoa':muid,
+                        'module_uoa':muoa,
                         'data_uoa':duoa,
                         'data_uid':duid,
                         'ignore_update':'yes'})
@@ -637,15 +663,27 @@ def download(i):
         ppz=os.path.join(path, config.PACK_FILE)
 
         if os.path.isfile(ppz):
-           if not force:
-              return {'return':1, 'error':'pack file already exists ('+ppz+')'}
+#           if not force:
+#              return {'return':1, 'error':'pack file already exists ('+ppz+')'}
            os.remove(ppz)
 
         # Download and save pack to file
         tstart=time.time()
-        rx=comm.download_file({'url':furl, 'file':ppz})
-        if rx['return']>0: return rx
+        fpack64=l.get('file_base64','')
 
+        if fpack64!='':
+           rx=ck.convert_upload_string_to_file({'file_content_base64':fpack64, 'filename':ppz})
+           if rx['return']>0: return rx
+        else:
+           rx=comm.download_file({'url':furl, 'file':ppz})
+           if rx['return']>0: return rx
+
+        # Save boostrap info (debug)
+        if sbf!='':
+           rx=ck.convert_file_to_upload_string({'filename':ppz})
+           if rx['return']>0: return rx
+           l['file_base64']=rx['file_content_base64']
+ 
         # MD5 of the pack
         rx=ck.load_text_file({'text_file':ppz, 'keep_as_bin':'yes'})
         if rx['return']>0: return rx
@@ -656,8 +694,6 @@ def download(i):
 
         if md5!=fmd5:
            return {'return':1, 'error':'MD5 of the newly created pack ('+md5+') did not match the one from the portal ('+fmd5+')'}
-
-        tstop=time.time()-tstart
 
         # Unpack to src subdirectory
         import zipfile
@@ -686,11 +722,14 @@ def download(i):
 
         f.close()
 
+        tstop=time.time()-tstart
+
         # Remove pack file
         os.remove(ppz)
 
         # Note
-        ck.out(spaces+'    Successfully downloaded ('+('%.1f' % tstop)+' sec)!') # to '+path)
+        if not preloaded:
+           ck.out(spaces+'    Successfully '+msg2+' ('+('%.2f' % tstop)+' sec)!') # to '+path)
 
         # Check deps
         if al:
@@ -722,4 +761,4 @@ def download(i):
                                'spaces':spaces+'    '})
                   if rx['return']>0 and rx['return']!=8: return rx
 
-    return r
+    return rr
