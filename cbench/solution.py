@@ -461,24 +461,47 @@ def init(i):
 
              if r['return']>0: return r
 
+#       ##############################################################
+#       # Downloading CK components
+#       ck.out(config.CR_LINE)
+#       ck.out('Downloading CK components from the portal ...')
+#       ck.out('')
+#
+#       ck_components=config.CR_SOLUTION_CK_COMPONENTS
+#
+#       cmd=cmd0
+#
+#       for x in ck_components:
+#           cmd+='\n'
+#           cmd+='cb download '+x['cid']
+#           if x.get('version','')!='':
+#              cmd+=' --version='+x['version']
+#           cmd+=' --force\n'
+#           if hplat=='linux':
+#              cmd+='if [[ $? != 0 ]]; then exit 1 ; fi\n'
+#
+#       ii['cmd']=cmd
+#
+#       r=ck.access(ii)
+#       if r['return']>0: return r
+#       rc=r['return_code']
+#       if rc>0:
+#          return {'return':99, 'error':'last command returned error'}
+
        ##############################################################
        # Downloading CK components
        ck.out(config.CR_LINE)
-       ck.out('Downloading CK components from the portal ...')
+       ck.out('Extra bootstrap of stable CK components for this solution ...')
        ck.out('')
 
        ck_components=config.CR_SOLUTION_CK_COMPONENTS
 
        cmd=cmd0
 
-       for x in ck_components:
-           cmd+='\n'
-           cmd+='cb download '+x['cid']
-           if x.get('version','')!='':
-              cmd+=' --version='+x['version']
-           cmd+=' --force\n'
-           if hplat=='linux':
-              cmd+='if [[ $? != 0 ]]; then exit 1 ; fi\n'
+       cmd+='\n'
+       cmd+='cb update --force\n'
+       if hplat=='linux':
+          cmd+='if [[ $? != 0 ]]; then exit 1 ; fi\n'
 
        ii['cmd']=cmd
 
@@ -682,7 +705,7 @@ def init(i):
            continue
 
         ck.out(config.CR_LINE)
-        ck.out('Command:  '+s)
+        ck.out(s)
         ck.out('')
 
         cmd=cmd0
