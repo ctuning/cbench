@@ -8,16 +8,20 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yj
 
 ## Introduction
 
-cBench is a cross-platform client connected with the 
-[open Collective Knowledge portal](https://cKnowledge.io/results)
+cBench is a small and cross-platform framework 
+connected with the [open Collective Knowledge portal](https://cKnowledge.io)
 to help researchers and practitioners 
-reproduce SOTA ML and systems research
-and share results on live SOTA scoreobards:
-[demo](https://cKnowledge.io/test).
+[reproduce ML&systems research](https://cKnowledge.io/reproduced-papers)
+on their own bare-metal platforms, participate in collaborative
+benchmarking and optimization, 
+and share results on [live scoreobards](https://cKnowledge.io/reproduced-results).
+
+You can try to reproduce MLPerf inference benchmark on your machine using [this solution](https://cKnowledge.io/test)
+and see public results from the community on this [scoreboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking).
 
 cBench is a part of the [Collective Knowledge project (CK)](https://cKnowledge.org)
 and uses [portable CK solutions](https://cknowledge.io/docs/intro/introduction.html#portable-ck-solution)
-describing how to download, build, benchmark and optimize applications
+to describe how to download, build, benchmark and optimize applications
 across different hardware, software, models and data sets.
 
 ## Platform support:
