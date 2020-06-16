@@ -8,7 +8,7 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yj
 
 ## News
 
-We have successfully completed the prototyping phase of the Collective Knolwedge technology
+We have successfully completed the prototyping phase of the Collective Knowledge technology
 to make it easier to reproduce AI&ML and deploy it in production with the help of portable CK workflows, reusable artifacts and MLOps
 as described in this [white paper](https://arxiv.org/abs/2006.07161)
 and the [CK presentation](https://cKnowledge.io/presentation/ck).
