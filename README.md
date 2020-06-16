@@ -6,6 +6,16 @@ Linux/MacOS: [![Build Status](https://travis-ci.org/ctuning/cbench.svg?branch=ma
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/yjq5myrrrkx3rydc?svg=true)](https://ci.appveyor.com/project/gfursin/cbench)
 
 
+## News
+
+We have successfully completed the prototyping phase of the Collective Knolwedge technology
+to make it easier to reproduce AI&ML and deploy it in production using portable CK workflows and reusable components
+as described in this [white paper](https://arxiv.org/abs/2006.07161).
+We are now preparing the second phase of this project to make CK more user friendly - 
+don't hesitate to get in touch with the [CK author](https://cKnowledge.io/@gfursin) to know more!
+
+
+
 ## Introduction
 
 cBench is a small and cross-platform framework 
