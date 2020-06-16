@@ -60,10 +60,10 @@ sudo apt install python3.7-dev
 sudo apt install -y libsm6 libxext6 libxrender-dev
 ```
 
-Install cbrain:
+Install cbench:
 
 ```
-python3 -m pip install cbrain
+python3 -m pip install cbench
 ```
 
 Initialize the [CK solution for MLPerf](https://cknowledge.io/solution/demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows):
@@ -78,7 +78,7 @@ Participate in crowd-benchmarking:
 cb benchmark demo-obj-detection-coco-tf-cpu-benchmark-linux-portable-workflows
 ```
 
-See results on a public [SOTA dashboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking).
+See your results on a public [SOTA dashboard](https://cknowledge.io/c/result/sota-mlperf-object-detection-v0.5-crowd-benchmarking).
 
 You can also use the stable Docker image to participate in crowd-benchmarking:
 
