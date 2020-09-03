@@ -98,9 +98,11 @@ def login(username,
 @click.option('--copyright', 'copyright', required=False)
 @click.option('--license', 'license', required=False)
 @click.option('--source', 'source', required=False)
+@click.option('-et', '--extra_tags', 'extra_tags', required=False, default='')
 
 def publish(cid,
             tags,
+            extra_tags,
             username,
             api_key,
             force,
@@ -132,7 +134,8 @@ def publish(cid,
                    'author_id':author_id,
                    'copyright':copyright,
                    'license':license,
-                   'source':source})
+                   'source':source,
+                   'extra_tags':extra_tags})
 
     if r['return']>0: process_error(r)
     return 0

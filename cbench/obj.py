@@ -103,6 +103,9 @@ def publish(i):
     source=i.get('source','')
     if source==None: source=''
 
+    sextra_tags=i.get('extra_tags','')
+    if sextra_tags==None: sextra_tags=''
+
     quiet=i.get('quiet',False)
     force=i.get('force',False)
 
@@ -167,7 +170,7 @@ def publish(i):
         # Specialize per specific modules
         not_digital_component=False
         extra_dict={}
-        extra_tags={}
+        extra_tags=[]
 
         if module_uoa=='module':
            extra_dict['last_module_actions']=[]
@@ -351,6 +354,12 @@ def publish(i):
               if x!='': repo_info['remote_git_checkout']=x
 
            repo_info['dict']=repo_dict
+
+        # Add extra tags
+        for et in sextra_tags.split(','):
+            et=et.strip().lower()
+            if et!='':
+               extra_tags.append(et)
 
         #TBD: owner, version, info about repo
         # Sending request
