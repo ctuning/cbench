@@ -1,3 +1,7 @@
+* 1.3.1
+  added "cb delete" action to delete non-permanent components from the portal (if owner)
+  added --permanent flag to cb publish to mark a given components as permanent (can't be deleted)
+
 * 1.2.11
   added --extra_tags to cb publish
 

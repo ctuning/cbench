@@ -22,6 +22,71 @@ skip_words_in_files=[
  '.cache'
 ]
 
+
+##############################################################################
+# Delete CK component from the portal if not permanent
+
+def delete(i):
+
+    """
+    Input:  {
+              cid [str] - CK CID of format (repo UOA:)module UOA:data UOA
+            }
+
+    Output: {
+              return  [int]    - return code = 0 if success or >0 if error
+              (error) [str]    - error string if return>0 
+            }
+    """
+
+    # Get current directory (since will be changing it to get info about Git repo)
+    cur_dir=os.getcwd()
+
+    # Get current configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r['dict']
+
+    # Check commands
+    # Username ##########################################################
+    username=cfg.get('username','')
+    if i.get('username')!=None: username=i['username']
+
+    if username=='' or username==None: 
+       return {'return':1, 'error':'Username is not defined'}
+
+    cfg['username']=username
+
+    # API key ###########################################################        
+    api_key=cfg.get('api_key','')
+
+    if i.get('api_key')!=None: api_key=i['api_key']
+
+    if api_key=='' or api_key==None: 
+       return {'return':1, 'error':'API key is not defined'}
+
+    cfg['api_key']=api_key
+
+    # CID ###########################################################        
+    cid=i.get('cid')
+
+    if cid=='' or cid==None: 
+       return {'return':1, 'error':'CK entry (CID) is not defined'}
+
+
+    # Sending request to download
+    r=comm.send({'config':cfg,
+                 'action':'delete',
+                 'dict':{
+                   'cid':cid
+                 }
+                })
+    if r['return']>0: return r
+
+    ck.out('  Successfully deleted component(s) from the portal!')
+
+    return {'return':0}
+
 ##############################################################################
 # Publish CK component to the portal
 
@@ -108,6 +173,7 @@ def publish(i):
 
     quiet=i.get('quiet',False)
     force=i.get('force',False)
+    permanent=i.get('permanent',False)
 
     # List CK components
     r=ck.access({'action':'search',
@@ -389,6 +455,7 @@ def publish(i):
                        'not_digital_component':not_digital_component,
                        'extra_dict':extra_dict,
                        'extra_tags':extra_tags,
+                       'permanent':permanent
                      }
                     })
         if r['return']>0: 
@@ -639,7 +706,7 @@ def download(i):
 # FGG: we should not add "version" for dependencies or related components since it's not the same!
 #              r=download({'cid':x, 'force':force, 'version':version, 'skip_module_check':True, 'all':al})
 
-              r=download({'cid':x, 'force':force, 'skip_module_check':True, 'all':al})
+              r=download({'cid':x, 'force':force, 'skip_module_check':smc, 'all':al})
               if r['return']>0: return r
 
         # Check if entry already exists

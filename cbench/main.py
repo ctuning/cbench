@@ -98,9 +98,11 @@ def login(username,
 @click.option('--copyright', 'copyright', required=False)
 @click.option('--license', 'license', required=False)
 @click.option('--source', 'source', required=False)
+@click.option('--permanent', is_flag=True)
 @click.option('-et', '--extra_tags', 'extra_tags', required=False, default='')
 
 def publish(cid,
+            permanent,
             tags,
             extra_tags,
             username,
@@ -122,6 +124,7 @@ def publish(cid,
     ''' 
     from . import obj
     r=obj.publish({'cid':cid,
+                   'permanent':permanent,
                    'tags':tags,
                    'username':username,
                    'api_key':api_key,
@@ -136,6 +139,30 @@ def publish(cid,
                    'license':license,
                    'source':source,
                    'extra_tags':extra_tags})
+
+    if r['return']>0: process_error(r)
+    return 0
+
+# Delete COMPONENT #############################################################################
+@cli.command()
+
+@click.argument('cid')
+
+@click.option('-u', '--username', 'username', required=False)
+@click.option('-a', '--api_key', 'api_key', required=False)
+
+def delete(cid,
+           username,
+           api_key):
+    '''
+    Delete CK component from the portal if not permanent!
+
+    CID: CK identifier ({repo UOA}:){module UOA}:{data UOA}.
+    ''' 
+    from . import obj
+    r=obj.delete({'cid':cid,
+                  'username':username,
+                  'api_key':api_key})
 
     if r['return']>0: process_error(r)
     return 0
